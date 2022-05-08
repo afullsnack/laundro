@@ -9,6 +9,14 @@
     },
     "dev": {
       "cache": false
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "outputs": [""]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": [""]
     }
   }
 }
