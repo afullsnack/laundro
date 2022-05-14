@@ -4,7 +4,7 @@ import {
   HomeOutlined,
   UserOutlined
 } from "@ant-design/icons";
-import { Card, Col, Grid, Layout, Row } from "antd";
+import { Card, Col, Grid, Layout, Row, Segmented } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 
 const { Header, Footer } = Layout;
@@ -100,58 +100,86 @@ export function withUserLayout(PageComp: React.ComponentClass) {
                 left: size ? size.x : 0,
                 right: size ? size.width : 0,
                 zIndex: 100,
+                background: "white"
               }}
               bodyStyle={{
-                display: "flex",
-                flexFlow: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
+                padding: 0,
               }}
             >
-              <a
+              <Segmented size="large" block options={[
+                {
+                  label: (
+                  <a
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      paddingTop: 15,
+                      paddingBottom: 15 
+                    }}
+                  >
+                    <HomeOutlined />
+                    <span>Home</span>
+                  </a>
+                  ),
+                  value: "home"
+                },
+                {
+                  label: (
+<a
                 style={{
                   display: "flex",
                   flexFlow: "column",
                   alignItems: "center",
                   justifyContent: "space-evenly",
-                }}
-              >
-                <HomeOutlined />
-                <span>Home</span>
-              </a>
-              <a
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
+                  paddingTop: 15,
+                      paddingBottom: 15
                 }}
               >
                 <CalendarOutlined />
                 <span>Pick Ups</span>
               </a>
-              <a
+                  ),
+                  value: "pickups"
+                },
+                {
+                  label: (
+<a
                 style={{
                   display: "flex",
                   flexFlow: "column",
                   alignItems: "center",
                   justifyContent: "space-evenly",
+                  paddingTop: 15,
+                      paddingBottom: 15
                 }}
               >
                 <UserOutlined />
                 <span>Profile</span>
               </a>
-              <a
+                  ),
+                  value: "profile"
+                },
+                {
+                  label: (
+<a
                 style={{
                   display: "flex",
                   flexFlow: "column",
                   alignItems: "center",
                   justifyContent: "space-evenly",
+                  paddingTop: 15,
+                      paddingBottom: 15
                 }}
               >
                 <AppstoreOutlined />
                 <span>Support</span>
               </a>
+                  ),
+                  value: "support"
+                }
+              ]} />
             </Card>
           </Col>
           <Col

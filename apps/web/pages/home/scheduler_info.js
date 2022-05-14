@@ -1,8 +1,19 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Button, Col, DownCircleOutlined, Row, withUserLayout } from "ui";
+import {
+  AddressComp,
+  Button,
+  CardComp,
+  Col,
+  DownCircleOutlined,
+  Input,
+  Row,
+  withUserLayout,
+} from "ui";
 import styles from "../../styles/Home.module.css";
+
+const { TextArea } = Input;
 
 export default withUserLayout(() => {
   const router = useRouter();
@@ -56,13 +67,22 @@ export default withUserLayout(() => {
             >
               <DownCircleOutlined style={{ color: "#0644A2", fontSize: 25 }} />
             </div>
-            <h4 style={{ margin: 0, textAlign: "left", display: "block" }}>
+            <h3
+              style={{
+                width: "100%",
+                margin: 0,
+                textAlign: "left",
+                display: "block",
+              }}
+            >
               Address
-            </h4>
+            </h3>
             <span style={{ textAlign: "left" }}>
               If changed, your most recent location will be your new default
               location
             </span>
+            <br />
+            <AddressComp />
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -74,12 +94,22 @@ export default withUserLayout(() => {
               justifyContent: "center",
             }}
           >
-            <h3 style={{ margin: 0 }}>Payment Method</h3>
-            <span>
+            <h3
+              style={{
+                width: "100%",
+                margin: 0,
+                textAlign: "left",
+                display: "block",
+              }}
+            >
+              Payment Method
+            </h3>
+            <span style={{ textAlign: "left" }}>
               If changed, your most recent selection will be your new default
               payment method
             </span>
-            {/* <ScheduleCalender onDatePicked={(day) => setDay(day)} /> */}
+            <br />
+            <CardComp />
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -91,7 +121,12 @@ export default withUserLayout(() => {
               justifyContent: "center",
             }}
           >
-            <h3 style={{ margin: 0 }}>Additional Note</h3>
+            <h3 style={{ margin: 0, marginBottom: 10 }}>Additional Note</h3>
+            <TextArea
+              rows={5}
+              style={{ borderRadius: 5, backgroundColor: "#0644A214" }}
+            />
+            <br />
             {/* <Radio.Group
               onChange={onRecurringChange}
               value={recurringValue}
@@ -110,7 +145,7 @@ export default withUserLayout(() => {
               className={styles.normal_btn}
               block
               size="large"
-              onClick={() => router.push("/home/")}
+              onClick={() => router.push("/home/review")}
             >
               Continue
             </Button>

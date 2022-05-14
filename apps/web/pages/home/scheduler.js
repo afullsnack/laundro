@@ -1,21 +1,23 @@
-import moment from "moment";
+// import moment from "moment";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ScheduleCalender, {
+import {
   Button,
   Col,
   DownCircleOutlined,
   Radio,
   Row,
+  ScheduleCalender,
   Space,
+  weekdays,
   withUserLayout,
 } from "ui";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(() => {
   const router = useRouter();
-  const [day, setDay] = useState(moment.weekdays()[new Date().getDay()]);
+  const [day, setDay] = useState(weekdays()[new Date().getDay()]);
   const [recurringValue, setRecurringValue] = useState("weekly");
 
   const onRecurringChange = (e) => {

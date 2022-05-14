@@ -39,7 +39,7 @@
 
 .textfield_rounded {
   border-radius: 25pt;
-  background-color: #0a0a0a0f;
+  /* background-color: #0a0a0a0f; */
 }
 
 .dropdown {
