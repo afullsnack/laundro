@@ -15,5 +15,11 @@
     "react": "^17.0.2",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.19.5",
+    "framer-motion": "^6.2.3",
+    "moment": "^2.29.1"
   }
 }
