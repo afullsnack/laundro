@@ -351,7 +351,8 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // TODO: link to cleaning prefs page
+                router.push("/profile/cleaning_prefs");
               }}
             >
               <h4
@@ -533,6 +534,13 @@ export default withUserLayout(({ pageWidth }) => {
                 style={{ color: "#000000", fontSize: 24, flex: 1 }}
               />
             </Card>
+            <Button
+              className={styles.ghost_btn}
+              size="large"
+              onClick={() => {}}
+            >
+              Logout
+            </Button>
           </Col>
         </Row>
       </main>

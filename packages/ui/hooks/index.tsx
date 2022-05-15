@@ -1,5 +1,5 @@
 import { CheckOutlined, ExclamationOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, Card, Radio } from "antd";
 import { useState } from "react";
 import { BottomDrawer } from "../BottomDrawer";
 
@@ -238,4 +238,28 @@ export const useErrorDrawer = (pageWidth: number, action: Function | null, style
     </Button>
   </BottomDrawer>
   };
+}
+
+/**
+  * @Component => useCustomRadioGroup
+  * @Params => 
+
+**/
+
+export const useCustomRadioGroup = (options: Array<{label: String, value: String}>, defaultVal: String) => {
+  const [value, setValue] = useState(defaultVal);
+
+
+  return {
+    currentValue: value,
+    RenderCustomRadioGroup: () => (
+      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} title={<h4 style={{textAlign: "left", margin: 0}}>STARCH LEVEL</h4>}>
+        <Radio.Group optionType="button" size="large" defaultValue={defaultVal} value={value} onChange={e => setValue(e.target.value)} style={{width: "100%", backgroundColor: ""}}>
+          {
+            options.map((item) => <Radio.Button style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === value && <CheckOutlined style={{color: "#0644A2", fontSize: 24}} />}</Radio.Button> )
+          }
+        </Radio.Group>
+      </Card>
+    )
+  }
 }
