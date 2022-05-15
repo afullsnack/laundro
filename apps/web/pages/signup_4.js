@@ -7,17 +7,17 @@ const bagList = [
   {
     title: "Wash, Dry, Fold",
     desc: "Items would be sorted, spot-treated, washed, dried and perfectly folded",
-    url: "/icon-512x512.png",
+    url: "/blue_pickupbag.png",
   },
   {
     title: "Both",
     desc: "Wash, dry,fold and dry cleaning",
-    url: "/icon-512x512.png",
+    url: "/black_blue_pickupbags.png",
   },
   {
     title: "Dry Cleaning",
     desc: "Items would be dry cleaned, laundered & pressed according to the care label and returned on hangers",
-    url: "/icon-512x512.png",
+    url: "/black_pickupbag.png",
   },
 ];
 
@@ -42,7 +42,7 @@ function SignupLocation() {
           <List
             itemLayout="horizontal"
             dataSource={bagList}
-            renderItem={(item) => (
+            renderItem={(item, index) => (
               <List.Item
                 style={{
                   border: "1px solid rgba(0,0,0,.1)",
@@ -53,7 +53,7 @@ function SignupLocation() {
                 }}
               >
                 <List.Item.Meta
-                  style={{ lineHeight: -5 }}
+                  style={{ lineHeight: -5, alignItems: "center" }}
                   avatar={<Avatar src={item.url} size={42} shape="square" />}
                   title={item.title}
                   description={

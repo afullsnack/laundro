@@ -67,6 +67,10 @@ export function withUserLayout(PageComp: React.ComponentClass) {
       return () => {};
     }, [parentRef, screen]);
     console.log(parentRef);
+    props = {
+      pageWidth: size? size.width : 0
+    }
+
     return (
       <Layout style={{ minHeight: "100vh", overflowY: "hidden" }}>
         <Row style={{ width: "100%", margin: 0, padding: 0 }}>
@@ -109,73 +113,77 @@ export function withUserLayout(PageComp: React.ComponentClass) {
               <Segmented size="large" block options={[
                 {
                   label: (
-                  <a
-                    style={{
-                      display: "flex",
-                      flexFlow: "column",
-                      alignItems: "center",
-                      justifyContent: "space-evenly",
-                      paddingTop: 15,
-                      paddingBottom: 15 
-                    }}
-                  >
-                    <HomeOutlined />
-                    <span>Home</span>
-                  </a>
+                    <a
+                      style={{
+                        display: "flex",
+                        flexFlow: "column",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        paddingTop: 15,
+                        paddingBottom: 15 
+                      }}
+                      href="/home/"
+                    >
+                      <HomeOutlined />
+                      <span>Home</span>
+                    </a>
                   ),
                   value: "home"
                 },
                 {
                   label: (
-<a
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                  paddingTop: 15,
-                      paddingBottom: 15
-                }}
-              >
-                <CalendarOutlined />
-                <span>Pick Ups</span>
-              </a>
+                    <a
+                      style={{
+                        display: "flex",
+                        flexFlow: "column",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        paddingTop: 15,
+                        paddingBottom: 15
+                      }}
+                      href="/pickups/"
+                    >
+                      <CalendarOutlined />
+                      <span>Pick Ups</span>
+                    </a>
                   ),
                   value: "pickups"
                 },
                 {
                   label: (
-<a
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                  paddingTop: 15,
-                      paddingBottom: 15
-                }}
-              >
-                <UserOutlined />
-                <span>Profile</span>
-              </a>
+                    <a
+                      style={{
+                        display: "flex",
+                        flexFlow: "column",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        paddingTop: 15,
+                        paddingBottom: 15
+                      }}
+                      href="/profile/"
+                    >
+                      <UserOutlined />
+                      <span>Profile</span>
+                    </a>
                   ),
                   value: "profile"
                 },
                 {
                   label: (
-<a
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                  paddingTop: 15,
-                      paddingBottom: 15
-                }}
-              >
-                <AppstoreOutlined />
-                <span>Support</span>
-              </a>
+                    <a
+                      style={{
+                        display: "flex",
+                        flexFlow: "column",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                        paddingTop: 15,
+                            paddingBottom: 15
+                      }}
+                      href="/support/"
+                    >
+                      <AppstoreOutlined />
+                      <span>Support</span>
+                    </a>
                   ),
                   value: "support"
                 }

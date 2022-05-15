@@ -9,21 +9,21 @@ const bagList = [
     desc: "N35 per bag",
     extra: "",
     count: 1,
-    url: "/icon-512x512.png",
+    url: "/blue_pickupbag.png",
   },
   {
     title: "5-bag bundle",
     desc: "N31.50 per bag / Total : N157.50",
     extra: "*bags expire if not used within 6 months of purchase",
     count: 5,
-    url: "/icon-512x512.png",
+    url: "/blue_pickupbag.png",
   },
   {
     title: "5-bag bundle",
     desc: "N29.75 per bag / Total : N297.50",
     extra: "*bags expire if not used within 6 months of purchase",
     count: 10,
-    url: "/icon-512x512.png",
+    url: "/blue_pickupbag.png",
   },
 ];
 
@@ -59,7 +59,7 @@ function SignupLocation() {
                 }}
               >
                 <List.Item.Meta
-                  style={{ lineHeight: -5 }}
+                  style={{ lineHeight: -5, alignItems: "center" }}
                   avatar={<Avatar src={item.url} size={42} shape="square" />}
                   title={item.title}
                   description={

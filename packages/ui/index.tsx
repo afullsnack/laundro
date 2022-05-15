@@ -7,6 +7,7 @@ export * from "@ant-design/icons";
 export * from "antd";
 export { weekdays } from "moment";
 export { AddressComp } from "./AddressComp";
+export { BottomDrawer } from "./BottomDrawer";
 export { ScheduleCalender } from "./Calender";
 export { CardComp } from "./CardComp";
 export { withLayout, withUserLayout } from "./Layout";

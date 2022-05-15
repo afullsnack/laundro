@@ -2,61 +2,24 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import {
-  Button,
-  Card,
-  CheckOutlined,
-  Col,
-  Row,
-  weekdays,
-  withUserLayout,
-} from "ui";
-import {
-  useConfirmDrawer,
-  useEditDrawer,
-  useErrorDrawer,
-  useRemovedDrawer,
-} from "ui/hooks";
+import { Card, Col, PlusOutlined, Row, weekdays, withUserLayout } from "ui";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {
   const router = useRouter();
   const [day, setDay] = useState(weekdays()[new Date().getDay()]);
   const [recurringValue, setRecurringValue] = useState("weekly");
+  const [visible, setVisible] = useState(false);
 
-  const { confirmDrawer, SetConfirmDrawer } = useConfirmDrawer(
-    pageWidth,
-    () => router.push("/home/"),
-    styles
-  );
-
-  const { removedDrawer, SetRemovedDrawer } = useRemovedDrawer(
-    pageWidth,
-    () => router.push("/home/"),
-    styles
-  );
-  const { errorDrawer, SetErrorDrawer } = useErrorDrawer(
-    pageWidth,
-    () => errorDrawer.close(),
-    styles
-  );
-
-  const { editDrawer, SetEditDrawer } = useEditDrawer(
-    pageWidth,
-    () => editDrawer.close(),
-    () => {
-      editDrawer.close();
-      removedDrawer.open();
-    },
-    () => {
-      editDrawer.close();
-      errorDrawer.open();
-    },
-    styles
-  );
   const onRecurringChange = (e) => {
     console.log("Recurring checked", e.target.value);
     setRecurringValue(e.target.value);
+  };
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
   };
 
   console.log(pageWidth, "Review page");
@@ -64,10 +27,10 @@ export default withUserLayout(({ pageWidth }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Review scheduled pick up</title>
+        <title>Upcoming pickups</title>
         <meta
           name="description"
-          content="Schedule a pickup date for your laundry"
+          content="Upcoming pickups you've already set"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -94,7 +57,7 @@ export default withUserLayout(({ pageWidth }) => {
               justifyContent: "center",
             }}
           >
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -105,8 +68,17 @@ export default withUserLayout(({ pageWidth }) => {
               }}
             >
               <CheckOutlined style={{ color: "#0644A2", fontSize: 25 }} />
-            </div>
-            <h2 style={{ margin: 0 }}>Review your pickup</h2>
+            </div> */}
+            <h2
+              style={{
+                margin: 0,
+                textAlign: "left",
+                width: "100%",
+                display: "inline-block",
+              }}
+            >
+              Upcoming Pickups
+            </h2>
             {/* <span>Select a date for your clothes to be picked up</span> */}
           </Col>
           <Col
@@ -117,6 +89,8 @@ export default withUserLayout(({ pageWidth }) => {
               flexFlow: "column",
               alignItems: "center",
               justifyContent: "center",
+              backgroundColor: "white",
+              paddingTop: 10,
             }}
           >
             <div
@@ -153,7 +127,7 @@ export default withUserLayout(({ pageWidth }) => {
                 <span>2021</span>
               </Card>
               <Card
-                bordered
+                bordered={false}
                 style={{
                   // border: "1px dashed #0644A280",
                   height: "100%",
@@ -180,6 +154,35 @@ export default withUserLayout(({ pageWidth }) => {
                 /> */}
               </Card>
             </div>
+            <Card
+              style={{ borderRadius: 20, width: "100%" }}
+              bodyStyle={{}}
+              bordered={false}
+            >
+              <div
+                style={{ display: "flex", flexFlow: "column", width: "100%" }}
+              >
+                {/* <h4 style={{ textAlign: "left" }}>Cleaning Preferences</h4> */}
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <h4 style={{ color: "#000000" }}>Frequency</h4>
+                  <span style={{ color: "#5D6571AC" }}>Wednesday Weekly</span>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <h4 style={{ color: "#000000" }}>Location</h4>
+                  <span style={{ color: "#5D6571AC" }}>333 Fremont Street</span>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <h4 style={{ color: "#000000" }}>Credit Card</h4>
+                  <span style={{ color: "#5D6571AC" }}>8689 VISA</span>
+                </div>
+              </div>
+            </Card>
           </Col>
           <Col
             xs={{ span: 24 }}
@@ -191,85 +194,65 @@ export default withUserLayout(({ pageWidth }) => {
               justifyContent: "center",
             }}
           >
-            <div
+            <Card
+              hoverable
+              bordered
+              onClick={() => router.push("/home/scheduler")}
               style={{
-                display: "flex",
-                flexFlow: "row",
                 width: "100%",
-                justifyContent: "space-between",
+                border: "1px dashed #0644A280",
+                borderRadius: 20,
+                background: "transparent",
               }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "start",
-                }}
-              >
-                <h4 style={{ margin: 0 }}>Address</h4>
-                <span style={{ color: "#5D6571AC" }}>333 Fremont Street</span>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexFlow: "column",
-                  alignItems: "end",
-                }}
-              >
-                <h4 style={{ margin: 0 }}>Credit Card</h4>
-                <span style={{ color: "#5D6571AC" }}>8689 VISA</span>
-              </div>
-            </div>
-            <br />
-            <div style={{ display: "flex", flexFlow: "column", width: "100%" }}>
-              <h4 style={{ textAlign: "left" }}>Cleaning Preferences</h4>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ color: "#5D6571AC" }}>Starch</span>
-                <span style={{ color: "#5D6571AC" }}>Light</span>
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ color: "#5D6571AC" }}>Starch</span>
-                <span style={{ color: "#5D6571AC" }}>Light</span>
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ color: "#5D6571AC" }}>Starch</span>
-                <span style={{ color: "#5D6571AC" }}>Light</span>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div
-              style={{
+              bodyStyle={{
+                padding: 10,
+                background: "transparent",
                 display: "flex",
                 flexFlow: "row",
                 alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
+                justifyContent: "start",
               }}
             >
-              <Button
-                className={styles.ghost_btn}
-                size="large"
-                style={{ marginRight: 10, flex: 1 }}
-                onClick={() => editDrawer.open()}
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  marginRight: 20,
+                  backgroundColor: "#0644A215",
+                  borderRadius: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                Edit
-              </Button>
-              <Button
-                className={styles.normal_btn}
-                size="large"
-                style={{ flex: 2 }}
-                onClick={() => confirmDrawer.open()}
-              >
-                Confirm
-              </Button>
-            </div>
+                <PlusOutlined style={{ color: "#0644A2EB", fontSize: 24 }} />
+              </div>
+              <h4 style={{ margin: 0, display: "inline-block" }}>
+                Create New Pickup
+              </h4>
+            </Card>
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            lg={{ span: 24 }}
+            style={{
+              display: "flex",
+              flexFlow: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "white",
+              paddingTop: 10,
+              marginTop: 20,
+            }}
+          >
+            <Card style={{ width: "100%" }} bordered={false}>
+              <h4>Past pickups</h4>
+              <span style={{ color: "#5D6571AC" }}>
+                No orders to view here. Schedule your first pick up
+              </span>
+            </Card>
           </Col>
         </Row>
-        {SetConfirmDrawer()}
-        {SetEditDrawer()}
-        {SetRemovedDrawer()}
-        {SetErrorDrawer()}
       </main>
     </div>
   );

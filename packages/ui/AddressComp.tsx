@@ -24,7 +24,7 @@ export const AddressComp = () => {
       width: "100%"
     }}>
     {
-      data.map(item => <Card style={{borderRadius: 20, marginRight: 10, backgroundColor: "white"}} bodyStyle={{ padding: 15, paddingTop: 25, paddingBottom: 25, display: "flex", flexFlow: "column", alignItems: "center", justifyContent: "center"}} bordered={false}>
+      data.map((item, index) => <Card key={index} style={{borderRadius: 20, marginRight: 10, backgroundColor: "white"}} bodyStyle={{ padding: 15, paddingTop: 25, paddingBottom: 25, display: "flex", flexFlow: "column", alignItems: "center", justifyContent: "center"}} bordered={false}>
       <HomeFilled style={{color: "#0644A2", fontSize: 24, marginBottom: 6}} />
       <h3 style={{margin: 0, marginBottom: 5}}>{item.title}</h3>
       <span>{item.address}</span>

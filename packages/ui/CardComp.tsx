@@ -28,7 +28,7 @@ export const CardComp = () => {
       width: "100%"
     }}>
     {
-      data.map(item => <Card style={{borderRadius: 20, marginBottom: 10, backgroundColor: "white"}} bodyStyle={{ padding: 15, display: "flex", flexFlow: "column", alignItems: "start", justifyContent: "center"}} bordered={false}>
+      data.map((item, index) => <Card key={index} style={{borderRadius: 20, marginBottom: 10, backgroundColor: "white"}} bodyStyle={{ padding: 15, display: "flex", flexFlow: "column", alignItems: "start", justifyContent: "center"}} bordered={false}>
       <h3 style={{margin: 0}}>{item.cardType}</h3>
       <span>{item.cardNumber} {item.cardMonth} {item.cardYear}</span>
     </Card>)
