@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button, Col, PageHeader, Row, weekdays, withUserLayout } from "ui";
-import { useCustomRadioGroup } from "ui/hooks";
+import { useCustomCheckBoxGroup, useCustomRadioGroup } from "ui/hooks";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {
@@ -11,28 +11,82 @@ export default withUserLayout(({ pageWidth }) => {
   const [day, setDay] = useState(weekdays()[new Date().getDay()]);
   const [recurringValue, setRecurringValue] = useState("weekly");
   const [visible, setVisible] = useState(false);
-  const [currentValue, StarchLevelOptions] = useCustomRadioGroup(
+  const [currentContactValue, ContactMethodOptions] = useCustomRadioGroup(
     [
       {
-        label: "None",
-        value: "none",
+        label: "Email",
+        value: "email",
       },
       {
-        label: "Light",
-        value: "light",
+        label: "Call",
+        value: "call",
       },
       {
-        label: "Medium",
-        value: "medium",
-      },
-      {
-        label: "Heavy",
-        value: "heavy",
+        label: "Chat",
+        value: "chat",
       },
     ],
-    "none",
-    "STARCH LEVEL"
+    "email",
+    "PREFERRED CONTACT METHOD"
   );
+  const [currentPushNotificationsValue, PushNotificationsOptions] =
+    useCustomCheckBoxGroup(
+      [
+        {
+          label: "Account Alerts",
+          value: "account_alerts",
+        },
+        {
+          label: "Arrival Notifications",
+          value: "arrival_notifications",
+        },
+        {
+          label: "Promotional Offers",
+          value: "promotional_offers",
+        },
+      ],
+      ["account_alerts"],
+      "PUSH NOTIFICATIONS"
+    );
+  const [currentSMSNotificationsValue, SMSNotificationOptions] =
+    useCustomCheckBoxGroup(
+      [
+        {
+          label: "Account Alerts",
+          value: "account_alerts",
+        },
+        {
+          label: "Arrival Notifications",
+          value: "arrival_notifications",
+        },
+        {
+          label: "Promotional Offers",
+          value: "promotional_offers",
+        },
+      ],
+      ["account_alerts", "arrival_notifications"],
+      "SMS NOTIFICATIONS"
+    );
+
+  const [currentEmailNotificationsValue, EmailNotificationOptions] =
+    useCustomCheckBoxGroup(
+      [
+        {
+          label: "Account Alerts",
+          value: "account_alerts",
+        },
+        {
+          label: "Arrival Notifications",
+          value: "arrival_notifications",
+        },
+        {
+          label: "Promotional Offers",
+          value: "promotional_offers",
+        },
+      ],
+      ["account_alerts", "arrival_notifications", "promotional_offers"],
+      "EMAIL NOTIFICATIONS"
+    );
 
   const onRecurringChange = (e) => {
     console.log("Recurring checked", e.target.value);
@@ -47,16 +101,37 @@ export default withUserLayout(({ pageWidth }) => {
 
   console.log(
     pageWidth,
-    "Cleaning prefs page",
-    currentValue,
+    "Comms prefs page",
+    currentContactValue,
+    "Current custom radio value"
+  );
+  console.log(
+    pageWidth,
+    "Comms prefs page",
+    currentPushNotificationsValue,
+    "Current custom radio value"
+  );
+  console.log(
+    pageWidth,
+    "Comms prefs page",
+    currentSMSNotificationsValue,
+    "Current custom radio value"
+  );
+  console.log(
+    pageWidth,
+    "Comms prefs page",
+    currentEmailNotificationsValue,
     "Current custom radio value"
   );
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>User profile - Cleaning Preferences</title>
-        <meta name="description" content="The users cleaning preferences" />
+        <title>User profile - Communication Preferences</title>
+        <meta
+          name="description"
+          content="The users Communication Preferences"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -96,7 +171,7 @@ export default withUserLayout(({ pageWidth }) => {
             </div> */}
             <PageHeader
               onBack={() => window.history.back()}
-              title="Cleaning Preferences"
+              title="Communication Preferences"
               extra={<></>}
             />
             {/* <span>Select a date for your clothes to be picked up</span> */}
@@ -111,7 +186,13 @@ export default withUserLayout(({ pageWidth }) => {
               justifyContent: "center",
             }}
           >
-            {StarchLevelOptions()}
+            {ContactMethodOptions()}
+            <br />
+            {PushNotificationsOptions()}
+            <br />
+            {SMSNotificationOptions()}
+            <br />
+            {EmailNotificationOptions()}
             <br />
             <br />
             <div

@@ -1,5 +1,6 @@
 import { CheckOutlined, ExclamationOutlined } from "@ant-design/icons";
-import { Button, Card, Radio } from "antd";
+import { Button, Card, Checkbox, Col, Radio, Row } from "antd";
+import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import { useState } from "react";
 import { BottomDrawer } from "../BottomDrawer";
 
@@ -60,7 +61,7 @@ export const useConfirmDrawer = (pageWidth: number, action: Function | null, sty
 
 /**
  * @Component => EditModal pickup modal, extends BottomDrawer
- * @Params => pageWidth, action, styles
+ * @Params => pageWidth, action, editAction1, editAction2, styles
  **/
 export const useEditDrawer = (pageWidth: number, action: Function | null, editAction1: Function | null, editAction2: Function | null, styles: Object | any) => {
   const [editDrawerVisible, setEditDrawerVisible] = useState(false);
@@ -242,24 +243,55 @@ export const useErrorDrawer = (pageWidth: number, action: Function | null, style
 
 /**
   * @Component => useCustomRadioGroup
-  * @Params => 
+  * @Params => options, defaultVal, title
 
 **/
 
-export const useCustomRadioGroup = (options: Array<{label: String, value: String}>, defaultVal: String) => {
+export const useCustomRadioGroup = (options: Array<{label: String, value: String}>, defaultVal: String, title: String) => {
   const [value, setValue] = useState(defaultVal);
 
-
-  return {
-    currentValue: value,
-    RenderCustomRadioGroup: () => (
-      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} title={<h4 style={{textAlign: "left", margin: 0}}>STARCH LEVEL</h4>}>
+  return [
+    value,
+    () => (
+      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} bodyStyle={{paddingTop: 10}} title={<h4 style={{textAlign: "left", margin: 0}}>{title}</h4>}>
         <Radio.Group optionType="button" size="large" defaultValue={defaultVal} value={value} onChange={e => setValue(e.target.value)} style={{width: "100%", backgroundColor: ""}}>
           {
-            options.map((item) => <Radio.Button style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === value && <CheckOutlined style={{color: "#0644A2", fontSize: 24}} />}</Radio.Button> )
+            options.map((item) => <Radio.Button key={item.value.toString()} style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === value && <CheckOutlined style={{color: "#0644A2", fontSize: 24, marginLeft: 120 }} />}</Radio.Button> )
           }
         </Radio.Group>
       </Card>
     )
-  }
+  ]
+}
+
+
+/**
+  * @Component => useCustomCheckBoxGroup
+  * @Params => options, defaultVal, title
+
+**/
+
+export const useCustomCheckBoxGroup = (options: Array<{label: String, value: String}>, defaultVal: CheckboxValueType[], title: String) => {
+  const [value, setValue] = useState<CheckboxValueType[]>(defaultVal);
+  console.log(defaultVal, "from inside comp");
+
+
+  return [
+    value,
+    () => (
+      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} bodyStyle={{paddingTop: 10}} title={<h4 style={{textAlign: "left", margin: 0}}>{title}</h4>}>
+        <Checkbox.Group defaultValue={value} value={value}  onChange={(checkedValues) => setValue(checkedValues)} style={{width: "100%"}}>
+          <Row gutter={[0, 16]}>
+            {
+              options.map((item) => 
+                <Col span={24} key={item.value.toString()}>
+                  <Checkbox style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "start"}} value={item.value}>{item.label}</Checkbox>
+                </Col>
+              )
+            }
+          </Row>
+        </Checkbox.Group>
+      </Card>
+    )
+  ]
 }

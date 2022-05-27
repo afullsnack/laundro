@@ -351,7 +351,7 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO: link to cleaning prefs page
+                // DONE: link to cleaning prefs page
                 router.push("/profile/cleaning_prefs");
               }}
             >
@@ -385,7 +385,8 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // DONE: handle click to communication prefs
+                router.push("/profile/comms_pref");
               }}
             >
               <h4
