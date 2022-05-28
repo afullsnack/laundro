@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Avatar, Button, List, withLayout } from "ui";
+import { Avatar, Button, List } from "ui";
+import { withLayout } from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
 const bagList = [

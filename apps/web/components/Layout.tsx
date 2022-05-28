@@ -1,11 +1,8 @@
+import React, { useEffect, useRef, useState } from "react";
 import {
   AppstoreOutlined,
-  CalendarOutlined,
-  HomeOutlined,
-  UserOutlined
-} from "@ant-design/icons";
-import { Card, Col, Grid, Layout, Row, Segmented } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+  CalendarOutlined, Card, Col, Grid, HomeOutlined, Layout, Row, Segmented, UserOutlined
+} from "ui";
 
 const { Header, Footer } = Layout;
 const { useBreakpoint } = Grid;
@@ -47,6 +44,7 @@ export function withUserLayout(PageComp: React.ComponentClass) {
     const parentRef = useRef<HTMLInputElement>(null);
     const [size, setSize] = useState<DOMRect | undefined>();
     const screen = useBreakpoint();
+    const [location, setLocation] = useState<String | null>();
 
     useEffect(() => {
       // Effect after render done
@@ -59,9 +57,12 @@ export function withUserLayout(PageComp: React.ComponentClass) {
           // parentRef.current.getBoundingClientRect().top,
           // parentRef.current.getBoundingClientRect().bottom,
           // parentRef.current.getBoundingClientRect(),
-          "Parent ref"
+          "Parent ref",
+          window?.location?.pathname,
+          "Window property"
         );
 
+      setLocation(window?.location?.pathname);
       setSize(parentRef?.current?.getBoundingClientRect());
 
       return () => {};
@@ -110,7 +111,7 @@ export function withUserLayout(PageComp: React.ComponentClass) {
                 padding: 0,
               }}
             >
-              <Segmented size="large" block options={[
+              <Segmented size="large" block value={location != null && location?.includes('home')? 'home' : location?.includes('pickups')? 'pickups' : location?.includes('profile')? 'profile' : location?.includes('support') ? 'support' : 'home'} options={[
                 {
                   label: (
                     <a

@@ -9,8 +9,8 @@ import {
   DownCircleOutlined,
   Input,
   Row,
-  withUserLayout,
 } from "ui";
+import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
 const { TextArea } = Input;

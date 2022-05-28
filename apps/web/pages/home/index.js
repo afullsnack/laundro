@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Avatar, Button, Card, Col, Input, Row, withUserLayout } from "ui";
+import { Avatar, Button, Card, Col, Input, Row } from "ui";
+import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(() => {

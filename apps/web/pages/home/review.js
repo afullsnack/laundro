@@ -2,21 +2,14 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import {
-  Button,
-  Card,
-  CheckOutlined,
-  Col,
-  Row,
-  weekdays,
-  withUserLayout,
-} from "ui";
+import { Button, Card, CheckOutlined, Col, Row, weekdays } from "ui";
 import {
   useConfirmDrawer,
   useEditDrawer,
   useErrorDrawer,
   useRemovedDrawer,
 } from "ui/hooks";
+import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {

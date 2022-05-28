@@ -11,8 +11,8 @@ import {
   Row,
   WalletOutlined,
   weekdays,
-  withUserLayout,
 } from "ui";
+import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {

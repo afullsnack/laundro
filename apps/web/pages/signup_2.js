@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Button, Input, withLayout } from "ui";
+import { Button, Input } from "ui";
+import { withLayout } from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
 function Signup() {

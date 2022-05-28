@@ -2,8 +2,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Button, Col, PageHeader, Row, weekdays, withUserLayout } from "ui";
+import { Button, Col, PageHeader, Row, weekdays } from "ui";
 import { useCustomRadioGroup } from "ui/hooks";
+import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {

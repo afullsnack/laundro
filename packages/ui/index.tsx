@@ -6,9 +6,9 @@ import "antd/dist/antd.min.css";
 export * from "@ant-design/icons";
 export * from "antd";
 export { weekdays } from "moment";
+// export { withLayout, withUserLayout } from "../../apps/web/components/Layout";
 export { AddressComp } from "./AddressComp";
 export { BottomDrawer } from "./BottomDrawer";
 export { ScheduleCalender } from "./Calender";
 export { CardComp } from "./CardComp";
-export { withLayout, withUserLayout } from "./Layout";
 
