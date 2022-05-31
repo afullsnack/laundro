@@ -65,7 +65,7 @@ export default withUserLayout(() => {
               <Button
                 className={styles.normal_btn}
                 size="large"
-                onClick={() => router.push("/home/scheduler")}
+                onClick={() => router.push("/pickups/scheduler")}
               >
                 Schedule Pick Up
               </Button>

@@ -198,7 +198,7 @@ export default withUserLayout(({ pageWidth }) => {
             <Card
               hoverable
               bordered
-              onClick={() => router.push("/home/scheduler")}
+              onClick={() => router.push("/pickups/scheduler")}
               style={{
                 width: "100%",
                 border: "1px dashed #0644A280",

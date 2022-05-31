@@ -242,6 +242,89 @@ export const useErrorDrawer = (pageWidth: number, action: Function | null, style
 }
 
 /**
+ * @Component => PrefDrawer profile Drawer, extends BottomDrawer
+ * @Params => pageWidth, action, styles
+**/
+export const usePrefDrawer = (pageWidth: number, primaryAction: Function | null, secondaryAction: Function | null, styles: Object | any, defaultOption: String) => {
+
+  const options = [
+    {
+      label: "None",
+      value: "none",
+    },
+    {
+      label: "Light",
+      value: "light",
+    },
+    {
+      label: "Medium",
+      value: "medium",
+    },
+    {
+      label: "Heavy",
+      value: "heavy",
+    },
+  ];
+  const [starchOption, setStarchOption] = useState(defaultOption || 'none');
+  const [prefDrawerVisible, setPrefDrawerVisible] = useState(false);
+
+  const showPrefDrawer = () => {
+    setPrefDrawerVisible(true);
+  };
+  const onPrefDrawerClose = () => {
+    setPrefDrawerVisible(false);
+  };
+
+  return {
+    isVisible: prefDrawerVisible,
+    prefDrawer: {
+      close: () => setPrefDrawerVisible(false),
+      open: () => showPrefDrawer()
+    },
+    SetPrefDrawer: () => <BottomDrawer
+    onClose={onPrefDrawerClose}
+    visible={prefDrawerVisible}
+    pageWidth={pageWidth}
+  >
+    <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} bodyStyle={{paddingTop: 10}} title={<h4 style={{textAlign: "left", margin: 0}}>{"STARCH LEVEL"}</h4>}>
+      <Radio.Group optionType="button" size="large" defaultValue={starchOption} value={starchOption} onChange={e => setStarchOption(e.target.value)} style={{width: "100%", backgroundColor: ""}}>
+        {
+          options.map((item) => <Radio.Button key={item.value.toString()} style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === starchOption && <CheckOutlined style={{color: "#0644A2", fontSize: 24, marginLeft: 120 }} />}</Radio.Button> )
+        }
+      </Radio.Group>
+    </Card>
+    <br/>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10,
+        width: "100%"
+      }}
+    >
+      <Button
+        className={styles.ghost_btn}
+        size="large"
+        style={{flex: 1, marginRight: 10}}
+        onClick={() => secondaryAction? secondaryAction() : null}
+      >
+        Cancel
+      </Button>
+      <Button
+        className={styles.normal_btn}
+        size="large"
+        style={{flex: 3}}
+        onClick={() => primaryAction? primaryAction() : null}
+      >
+        Save Changes
+      </Button>
+    </div>
+  </BottomDrawer>
+  };
+}
+
+/**
   * @Component => useCustomRadioGroup
   * @Params => options, defaultVal, title
 

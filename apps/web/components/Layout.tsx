@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import {
   AppstoreOutlined,
@@ -111,80 +112,84 @@ export function withUserLayout(PageComp: React.ComponentClass) {
                 padding: 0,
               }}
             >
-              <Segmented size="large" block value={location != null && location?.includes('home')? 'home' : location?.includes('pickups')? 'pickups' : location?.includes('profile')? 'profile' : location?.includes('support') ? 'support' : 'home'} options={[
+              <Segmented size="large" block value={location != null && location?.includes('home')? 'home' : location?.includes('pickups')? 'pickups' : location?.includes('profile')? 'profile' : location?.includes('support') ? 'support' : ''} options={[
                 {
                   label: (
-                    <a
-                      style={{
-                        display: "flex",
-                        flexFlow: "column",
-                        alignItems: "center",
-                        justifyContent: "space-evenly",
-                        paddingTop: 15,
-                        paddingBottom: 15 
-                      }}
-                      href="/home/"
-                    >
-                      <HomeOutlined />
-                      <span>Home</span>
-                    </a>
+                    <Link href={"/home/"}>
+                      <a
+                        style={{
+                          display: "flex",
+                          flexFlow: "column",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          paddingTop: 15,
+                          paddingBottom: 15 
+                        }}
+                      >
+                        <HomeOutlined />
+                        <span>Home</span>
+                      </a>
+                    </Link>
                   ),
                   value: "home"
                 },
                 {
                   label: (
-                    <a
-                      style={{
-                        display: "flex",
-                        flexFlow: "column",
-                        alignItems: "center",
-                        justifyContent: "space-evenly",
-                        paddingTop: 15,
-                        paddingBottom: 15
-                      }}
-                      href="/pickups/"
-                    >
-                      <CalendarOutlined />
-                      <span>Pick Ups</span>
-                    </a>
+                    <Link href={"/pickups/"}>
+                      <a
+                        style={{
+                          display: "flex",
+                          flexFlow: "column",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          paddingTop: 15,
+                          paddingBottom: 15
+                        }}
+                      >
+                        <CalendarOutlined />
+                        <span>Pick Ups</span>
+                      </a>
+                    </Link>
                   ),
                   value: "pickups"
                 },
                 {
                   label: (
-                    <a
-                      style={{
-                        display: "flex",
-                        flexFlow: "column",
-                        alignItems: "center",
-                        justifyContent: "space-evenly",
-                        paddingTop: 15,
-                        paddingBottom: 15
-                      }}
-                      href="/profile/"
-                    >
-                      <UserOutlined />
-                      <span>Profile</span>
-                    </a>
+                    <Link href={"/profile/"}>
+                      <a
+                        style={{
+                          display: "flex",
+                          flexFlow: "column",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          paddingTop: 15,
+                          paddingBottom: 15
+                        }}
+                      >
+                        <UserOutlined />
+                        <span>Profile</span>
+                      </a>
+                    </Link>
                   ),
                   value: "profile"
                 },
                 {
                   label: (
-                    <a
-                      style={{
-                        display: "flex",
-                        flexFlow: "column",
-                        alignItems: "center",
-                        justifyContent: "space-evenly",
-                        paddingTop: 15,
-                            paddingBottom: 15
-                      }}
-                      href="/support/"
-                    >
-                      <AppstoreOutlined />
-                      <span>Support</span>
-                    </a>
+                    <Link href={"/support/"}>
+                      <a
+                        style={{
+                          display: "flex",
+                          flexFlow: "column",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          paddingTop: 15,
+                              paddingBottom: 15
+                        }}
+                      >
+                        <AppstoreOutlined />
+                        <span>Support</span>
+                      </a>
+                    </Link>
                   ),
                   value: "support"
                 }

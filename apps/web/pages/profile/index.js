@@ -7,6 +7,7 @@ import {
   Card,
   Col,
   EnvironmentFilled,
+  message,
   RightOutlined,
   Row,
   WalletOutlined,
@@ -419,7 +420,8 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // DONE: Link to the bag request page
+                router.push("/profile/bag_request");
               }}
             >
               <h4
@@ -452,7 +454,8 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // DONE: Link to the referal page
+                router.push("/profile/referral");
               }}
             >
               <h4
@@ -485,7 +488,8 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // TODO: Link to gift cards page and integrate
+                message.info("Feature coming soon...");
               }}
             >
               <h4
@@ -518,7 +522,7 @@ export default withUserLayout(({ pageWidth }) => {
                 justifyContent: "space-between",
               }}
               onClick={() => {
-                // TODO:
+                // TODO: Setup change password Modal flow
               }}
             >
               <h4
