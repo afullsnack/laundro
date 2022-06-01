@@ -1,4 +1,4 @@
-import { CheckOutlined, ExclamationOutlined } from "@ant-design/icons";
+import { CheckOutlined, EllipsisOutlined, ExclamationOutlined, MailFilled, MessageFilled } from "@ant-design/icons";
 import { Button, Card, Checkbox, Col, Radio, Row } from "antd";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import { useState } from "react";
@@ -154,35 +154,193 @@ export const useRemovedDrawer = (pageWidth: number, action: Function | null, sty
       open: () => showRemovedDrawer()
     },
     SetRemovedDrawer: () => <BottomDrawer
-    onClose={onRemovedDrawerClose}
-    visible={removedDrawerVisible}
-    pageWidth={pageWidth}
-  >
-    <div
-      style={{
+      onClose={onRemovedDrawerClose}
+      visible={removedDrawerVisible}
+      pageWidth={pageWidth}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 10,
+          backgroundColor: "#0644A215",
+          borderRadius: "100%",
+        }}
+      >
+        <CheckOutlined style={{ color: "#0644A2", fontSize: 25 }} />
+      </div>
+      <br />
+      <h2 style={{ margin: 0, marginBottom: 10 }}>Pick Up Removed</h2>
+      <span>Your pick up has been successfully removed</span>
+      <br />
+      <Button
+        className={styles.normal_btn}
+        size="large"
+        block
+        onClick={() => action? action() : null}
+      >
+        Got it
+      </Button>
+    </BottomDrawer>
+  };
+}
+
+
+/**
+ * @Component => referralDrawer Refer a friend actions drawer Drawer, extends BottomDrawer
+ * @Params => pageWidth, action, styles
+**/
+export const useReferralDrawer = (pageWidth: number, action: Function[] | null, styles: Object | any) => {
+
+  const [referralDrawerVisible, setReferralDrawerVisible] = useState(false);
+
+  const showReferralDrawer = () => {
+    setReferralDrawerVisible(true);
+  };
+  const onReferralDrawerClose = () => {
+    setReferralDrawerVisible(false);
+  };
+
+  return {
+    isVisible: referralDrawerVisible,
+    referralDrawer: {
+      close: () => setReferralDrawerVisible(false),
+      open: () => showReferralDrawer()
+    },
+    SetReferralDrawer: () => <BottomDrawer
+      onClose={onReferralDrawerClose}
+      visible={referralDrawerVisible}
+      pageWidth={pageWidth}
+    >
+      <br />
+      <h2 style={{ margin: 0, marginBottom: 10 }}>Give $20 Get $20</h2>
+      <span>Friends don’t let friends do Laundry</span>
+      <br />
+      <br />
+      <span>Share</span>
+      <br/>
+      <div style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        padding: 10,
-        backgroundColor: "#0644A215",
-        borderRadius: "100%",
-      }}
+        justifyContent: "space-evenly",
+        width: "100%",
+        // padding: 10,
+        // borderRadius: "100%",
+      }}>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 15,
+            backgroundColor: "#0644A215",
+            borderRadius: "100%",
+          }}
+        >
+          <MessageFilled style={{ color: "#0644A2", fontSize: 25 }} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 15,
+            backgroundColor: "#0644A215",
+            borderRadius: "100%",
+          }}
+        >
+          <MailFilled style={{ color: "#0644A2", fontSize: 25 }} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 15,
+            backgroundColor: "#0644A215",
+            borderRadius: "100%",
+          }}
+        >
+          <EllipsisOutlined style={{ color: "#0644A2", fontSize: 25 }} />
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <Button
+        className={styles.ghost_btn}
+        size="large"
+        block
+        onClick={() => action? action[0]() : null}
+      >
+        Cancel
+      </Button>
+    </BottomDrawer>
+  };
+}
+
+
+/**
+ * @Component => LogoutDrawer logout Drawer, extends BottomDrawer
+ * @Params => pageWidth, action, styles
+**/
+export const useLogoutDrawer = (pageWidth: number, action: Function[] | null, styles: Object | any) => {
+
+  const [logoutDrawerVisible, setLogoutDrawerVisible] = useState(false);
+
+  const showLogoutDrawer = () => {
+    setLogoutDrawerVisible(true);
+  };
+  const onLogoutDrawerClose = () => {
+    setLogoutDrawerVisible(false);
+  };
+
+  return {
+    isVisible: logoutDrawerVisible,
+    logoutDrawer: {
+      close: () => setLogoutDrawerVisible(false),
+      open: () => showLogoutDrawer()
+    },
+    SetLogoutDrawer: () => <BottomDrawer
+      onClose={onLogoutDrawerClose}
+      visible={logoutDrawerVisible}
+      pageWidth={pageWidth}
     >
-      <CheckOutlined style={{ color: "#0644A2", fontSize: 25 }} />
-    </div>
-    <br />
-    <h2 style={{ margin: 0, marginBottom: 10 }}>Pick Up Removed</h2>
-    <span>Your pick up has been successfully removed</span>
-    <br />
-    <Button
-      className={styles.normal_btn}
-      size="large"
-      block
-      onClick={() => action? action() : null}
-    >
-      Got it
-    </Button>
-  </BottomDrawer>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 15,
+            backgroundColor: "#0644A215",
+            borderRadius: "100%",
+          }}
+        >
+          <MessageFilled style={{ color: "#0644A2", fontSize: 25 }} />
+        </div>
+      <br />
+      <h2 style={{ margin: 0, marginBottom: 10 }}>Log Out</h2>
+      <span>Are you sure you want to logout?</span>
+      <br />
+      <br/>
+      <Button
+        className={styles.ghost_btn}
+        size="large"
+        block
+        onClick={() => action? action[0]() : null}
+      >
+        Yes, Log out
+      </Button>
+      <Button
+        className={styles.normal_btn}
+        size="large"
+        block
+        onClick={() => action? action[1]() : onLogoutDrawerClose()}
+      >
+        No
+      </Button>
+    </BottomDrawer>
   };
 }
 

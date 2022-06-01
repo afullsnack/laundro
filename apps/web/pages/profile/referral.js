@@ -17,6 +17,7 @@ import {
   UserOutlined,
   weekdays,
 } from "ui";
+import { useReferralDrawer } from "ui/hooks";
 import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
@@ -36,6 +37,13 @@ export default withUserLayout(({ pageWidth }) => {
   const onClose = () => {
     setVisible(false);
   };
+
+  // Setup Referral drawer
+  const { referralDrawer, SetReferralDrawer } = useReferralDrawer(
+    pageWidth,
+    [() => referralDrawer.close()],
+    styles
+  );
 
   return (
     <div className={styles.container}>
@@ -98,7 +106,7 @@ export default withUserLayout(({ pageWidth }) => {
           >
             <div style={{ width: "100%" }}>
               <Carousel
-                autoplay={false}
+                autoplay={true}
                 draggable
                 accessibility={true}
                 style={{ height: "auto", width: "100%" }}
@@ -142,7 +150,7 @@ export default withUserLayout(({ pageWidth }) => {
                     <Button
                       className={styles.normal_btn}
                       size="large"
-                      onClick={() => {}}
+                      onClick={() => referralDrawer.open()}
                       style={{ flex: 3, background: "white", color: "#FF3EB3" }}
                     >
                       Invite Friend
@@ -315,6 +323,7 @@ export default withUserLayout(({ pageWidth }) => {
             </Card>
           </Col>
         </Row>
+        {SetReferralDrawer()}
       </main>
     </div>
   );

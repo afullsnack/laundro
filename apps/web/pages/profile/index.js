@@ -13,6 +13,7 @@ import {
   WalletOutlined,
   weekdays,
 } from "ui";
+import { useLogoutDrawer } from "ui/hooks";
 import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
@@ -21,6 +22,17 @@ export default withUserLayout(({ pageWidth }) => {
   const [day, setDay] = useState(weekdays()[new Date().getDay()]);
   const [recurringValue, setRecurringValue] = useState("weekly");
   const [visible, setVisible] = useState(false);
+
+  const { logoutDrawer, SetLogoutDrawer } = useLogoutDrawer(
+    pageWidth,
+    [
+      () => {
+        /*Logout function handle some cleanup*/
+      },
+      () => logoutDrawer.close(),
+    ],
+    styles
+  );
 
   const onRecurringChange = (e) => {
     console.log("Recurring checked", e.target.value);
@@ -548,6 +560,7 @@ export default withUserLayout(({ pageWidth }) => {
             </Button>
           </Col>
         </Row>
+        {SetLogoutDrawer()}
       </main>
     </div>
   );
