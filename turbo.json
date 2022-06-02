@@ -17,6 +17,10 @@
     "test": {
       "dependsOn": ["^build"],
       "outputs": [""]
+    },
+    "deploy": {
+      "dependsOn": ["build", "test"],
+      "outputs": []
     }
   }
 }

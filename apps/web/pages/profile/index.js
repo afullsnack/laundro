@@ -554,7 +554,7 @@ export default withUserLayout(({ pageWidth }) => {
             <Button
               className={styles.ghost_btn}
               size="large"
-              onClick={() => {}}
+              onClick={() => logoutDrawer.open()}
             >
               Logout
             </Button>
