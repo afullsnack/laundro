@@ -10,7 +10,7 @@
     "build": "turbo run build",
     "build:web": "turbo run build --filter=./apps/web",
     "start:web": "turbo run start --filter=./apps/web",
-    "start": "turbo run start",
+    "start": "turbo run start --filter=./apps/web",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
