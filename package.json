@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "start:web": "turbo run build && turbo run start --filter=./apps/web",
+    "build:web": "turbo run build --filter=./apps/web",
+    "start:web": "turbo run start --filter=./apps/web",
     "start": "turbo run start",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
