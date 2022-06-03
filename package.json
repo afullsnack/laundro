@@ -11,6 +11,7 @@
     "build:web": "turbo run build --filter=./apps/web",
     "start:web": "turbo run start --filter=./apps/web",
     "start": "turbo run start --filter=./apps/web",
+    "deploy": "turbo run build --scope=./apps/web --includeDependencies --no-deps",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
