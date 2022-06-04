@@ -11,4 +11,5 @@ export { AddressComp } from "./AddressComp";
 export { BottomDrawer } from "./BottomDrawer";
 export { ScheduleCalender } from "./Calender";
 export { CardComp } from "./CardComp";
+export { InstagramAnimation, PlayPause } from "./UseAnimation";
 

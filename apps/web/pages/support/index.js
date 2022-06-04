@@ -2,7 +2,19 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Col, Row, weekdays } from "ui";
+import {
+  Card,
+  Carousel,
+  Col,
+  DollarOutlined,
+  MailFilled,
+  MessageFilled,
+  PhoneFilled,
+  PlayPause,
+  QuestionOutlined,
+  Row,
+  weekdays,
+} from "ui";
 import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
@@ -35,7 +47,7 @@ export default withUserLayout(({ pageWidth }) => {
 
       <main className={styles.main}>
         <Row
-          gutter={[8, 16]}
+          gutter={[8, 32]}
           style={{
             width: "100%",
             marginLeft: 0,
@@ -77,7 +89,216 @@ export default withUserLayout(({ pageWidth }) => {
             >
               Support
             </h2>
-            {/* <span>Select a date for your clothes to be picked up</span> */}
+            <span style={{ textAlign: "left" }}>
+              We’re available Monday to Friday from 8:00AM To 8:00pm EST
+            </span>
+            <br />
+            <br />
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
+                // padding: 10,
+                // borderRadius: "100%",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 20,
+                  backgroundColor: "#0644A215",
+                  borderRadius: "100%",
+                }}
+              >
+                <MessageFilled style={{ color: "#0644A2", fontSize: 25 }} />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 20,
+                  backgroundColor: "#0644A215",
+                  borderRadius: "100%",
+                }}
+              >
+                <PhoneFilled style={{ color: "#0644A2", fontSize: 25 }} />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 20,
+                  backgroundColor: "#0644A215",
+                  borderRadius: "100%",
+                }}
+              >
+                <MailFilled style={{ color: "#0644A2", fontSize: 25 }} />
+              </div>
+            </div>
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            lg={{ span: 24 }}
+            style={{
+              display: "flex",
+              flexFlow: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Card
+              hoverable
+              bordered={false}
+              style={{
+                width: "100%",
+                borderRadius: 8,
+                flex: 1,
+                marginRight: 10,
+                background: "#7D90AA15",
+              }}
+              bodyStyle={{
+                display: "flex",
+                flexFlow: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 0,
+                paddingTop: 25,
+                paddingBottom: 25,
+              }}
+              onClick={() => {
+                // TODO: Link to Subscription tier page
+              }}
+            >
+              <DollarOutlined style={{ color: "#0644A2", fontSize: 24 }} />
+              <h4 style={{ margin: 0, color: "#0644A2", marginTop: 10 }}>
+                Pricing
+              </h4>
+            </Card>
+            <Card
+              hoverable
+              bordered={false}
+              style={{
+                width: "100%",
+                borderRadius: 8,
+                flex: 1,
+                background: "#7D90AA15",
+              }}
+              bodyStyle={{
+                display: "flex",
+                flexFlow: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 0,
+                paddingTop: 25,
+                paddingBottom: 25,
+              }}
+              onClick={() => {
+                // TODO: Link to FAQ's page
+              }}
+            >
+              <QuestionOutlined style={{ color: "#0644A2", fontSize: 24 }} />
+              <h4 style={{ margin: 0, color: "#0644A2", marginTop: 10 }}>
+                FAQ's
+              </h4>
+            </Card>
+          </Col>
+          <Col
+            xs={{ span: 24 }}
+            lg={{ span: 24 }}
+            style={{
+              display: "flex",
+              flexFlow: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h4 style={{ textAlign: "left", width: "100%", margin: 0 }}>
+              Video FAQ's
+            </h4>
+            <br />
+            <div style={{ width: "100%" }}>
+              <Carousel
+                autoplay={true}
+                draggable
+                accessibility={true}
+                style={{ height: "auto", width: "100%" }}
+                afterChange={(current) => console.log("Current slide", current)}
+                slidesToShow={1}
+                centerPadding="30px"
+                centerMode={true}
+                dots={false}
+              >
+                <div>
+                  <Card
+                    hoverable={false}
+                    bordered={false}
+                    style={{
+                      width: "100%",
+                      backgroundImage: "url('/bags_group.png')",
+                      backgroundSize: "60%",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      overflow: "hidden",
+                    }}
+                    bodyStyle={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: 10,
+                      borderRadius: 8,
+                      padding: 0,
+                      paddingTop: 30,
+                      paddingBottom: 30,
+                      background: "rgba(0,0,0,.45)",
+                    }}
+                    onClick={() => {
+                      // TODO: Link to FAQ's page
+                    }}
+                  >
+                    <PlayPause />
+                  </Card>
+                </div>
+                <div>
+                  <Card
+                    hoverable={false}
+                    bordered={false}
+                    style={{
+                      width: "100%",
+                      backgroundImage: "url('/bags_group.png')",
+                      backgroundSize: "60%",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      overflow: "hidden",
+                    }}
+                    bodyStyle={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: 10,
+                      borderRadius: 8,
+                      padding: 0,
+                      paddingTop: 30,
+                      paddingBottom: 30,
+                      background: "rgba(0,0,0,.45)",
+                    }}
+                    onClick={() => {
+                      // TODO: Link to FAQ's page
+                    }}
+                  >
+                    <PlayPause />
+                  </Card>
+                </div>
+              </Carousel>
+            </div>
           </Col>
         </Row>
       </main>
