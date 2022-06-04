@@ -10,6 +10,7 @@ function Index() {
 
   // Destructure the queries
   const { signup, login, email } = router.query;
+  console.info(signup, login, email);
   return (
     <div className={styles.container}>
       <Head>
@@ -21,57 +22,56 @@ function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {!signup ||
-        (!login && (
-          <main className={styles.main}>
-            <Image
-              src="/landing_img.png"
-              width={360}
-              preview={true}
-              rel="Login image"
-            />
-            <br />
-            <h2>Schedule & Manage Pickups</h2>
-            <span>
-              Schedule one-time pickups or create a Recurring schedule. Add
-              cleaning notes. Change Delivery locations and payment methods Or
-              even reschedule with one tap
-            </span>
-            <br />
-            <br />
-            <Button
-              type="ghost"
-              className={styles.ghost_btn}
-              size="large"
-              block
-              onClick={() => router.push("/?login")}
-            >
-              Log in Via SMS
-            </Button>
-            <br />
-            <Button
-              type="ghost"
-              className={styles.normal_btn}
-              size="large"
-              block
-              onClick={() => {
-                // Call the next auth gmail login function
-              }}
-            >
-              Log in Via Gmail
-            </Button>
-          </main>
-        ))}
+      {typeof signup === "undefined" && typeof login === "undefined" && (
+        <main className={styles.main}>
+          <Image
+            src="/landing_img.png"
+            width={360}
+            preview={true}
+            rel="Login image"
+          />
+          <br />
+          <h2>Schedule & Manage Pickups</h2>
+          <span>
+            Schedule one-time pickups or create a Recurring schedule. Add
+            cleaning notes. Change Delivery locations and payment methods Or
+            even reschedule with one tap
+          </span>
+          <br />
+          <br />
+          <Button
+            type="ghost"
+            className={styles.ghost_btn}
+            size="large"
+            block
+            onClick={() => router.push("/?login")}
+          >
+            Log in Via SMS
+          </Button>
+          <br />
+          <Button
+            type="ghost"
+            className={styles.normal_btn}
+            size="large"
+            block
+            onClick={() => {
+              // Call the next auth gmail login function
+            }}
+          >
+            Log in Via Gmail
+          </Button>
+        </main>
+      )}
 
-      {signup && <Signup router={router} />}
+      {typeof signup !== "undefined" && <Signup router={router} />}
 
-      {login && <Login router={router} />}
+      {typeof login !== "undefined" && <Login router={router} />}
     </div>
   );
 }
 
 const Signup = ({ router }) => (
-  <>
+  <main className={styles.main}>
     <h2>Get Started</h2>
     <span>Enter your details to get started</span>
     <br />
@@ -108,11 +108,11 @@ const Signup = ({ router }) => (
         <a>Login</a>
       </Link>
     </span>
-  </>
+  </main>
 );
 
 const Login = ({ router }) => (
-  <>
+  <main className={styles.main}>
     <h2>Welcome Back</h2>
     <span>Enter your details to review and/or schedule your next pickup</span>
     <br />
@@ -149,7 +149,7 @@ const Login = ({ router }) => (
         <a>Sign Up</a>
       </Link>
     </span>
-  </>
+  </main>
 );
 
 export default withLayout(Index);
