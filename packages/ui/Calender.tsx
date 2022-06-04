@@ -2,7 +2,7 @@ import { Calendar, Card } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 
-export const ScheduleCalender = ({ onDatePicked } : any) => {
+export const ScheduleCalender = ({ onDatePicked, showHeader = false } : any) => {
   const onPanelChange = (value: any, mode: any) => {
     console.log(value, mode);
   };
@@ -13,7 +13,7 @@ export const ScheduleCalender = ({ onDatePicked } : any) => {
       moment.weekdays()[date?._d.getDay()],
       "Date selected"
     );
-    onDatePicked(moment.weekdays()[date?._d.getDay()]);
+    onDatePicked(date?._d);
   };
 
   const [defaultDate, setDefaultDate] = useState<moment.Moment | any>();
@@ -33,7 +33,7 @@ export const ScheduleCalender = ({ onDatePicked } : any) => {
         onPanelChange={onPanelChange}
         onSelect={onSelect}
         mode="month"
-        headerRender={({ value, type, onChange, onTypeChange }) => null}
+        headerRender={({ value, type, onChange, onTypeChange }) => showHeader? <h3 style={{margin: 0, textAlign: "center", color: "rgba(9, 32, 88, 1)"}}>{moment.months()[value.month()]}</h3> : null}
       />
     </Card>
   );
