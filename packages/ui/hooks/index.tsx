@@ -317,29 +317,33 @@ export const useLogoutDrawer = (pageWidth: number, action: Function[] | null, st
             borderRadius: "100%",
           }}
         >
-          <MessageFilled style={{ color: "#0644A2", fontSize: 25 }} />
+          <ExclamationOutlined style={{ color: "#0644A2", fontSize: 25 }} />
         </div>
       <br />
       <h2 style={{ margin: 0, marginBottom: 10 }}>Log Out</h2>
       <span>Are you sure you want to logout?</span>
       <br />
       <br/>
-      <Button
-        className={styles.ghost_btn}
-        size="large"
-        block
-        onClick={() => action? action[0]() : null}
-      >
-        Yes, Log out
-      </Button>
-      <Button
-        className={styles.normal_btn}
-        size="large"
-        block
-        onClick={() => action? action[1]() : onLogoutDrawerClose()}
-      >
-        No
-      </Button>
+      <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "100%"}}>
+        <Button
+          className={styles.ghost_btn}
+          style={{flex: 1, marginRight: 8}}
+          size="large"
+          block
+          onClick={() => action? action[0]() : null}
+        >
+          Yes, Log out
+        </Button>
+        <Button
+          className={styles.normal_btn}
+          style={{flex: 1}}
+          size="large"
+          block
+          onClick={() => action? action[1]() : onLogoutDrawerClose()}
+        >
+          No
+        </Button>
+      </div>
     </BottomDrawer>
   };
 }

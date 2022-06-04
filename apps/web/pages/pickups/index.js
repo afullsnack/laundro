@@ -91,7 +91,8 @@ export default withUserLayout(({ pageWidth }) => {
               alignItems: "center",
               justifyContent: "center",
               backgroundColor: "white",
-              paddingTop: 10,
+              padding: 10,
+              borderRadius: 8,
             }}
           >
             <div
@@ -244,6 +245,7 @@ export default withUserLayout(({ pageWidth }) => {
               backgroundColor: "white",
               paddingTop: 10,
               marginTop: 20,
+              borderRadius: 8,
             }}
           >
             <Card style={{ width: "100%" }} bordered={false}>

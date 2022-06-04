@@ -90,7 +90,7 @@ export default withUserLayout(({ pageWidth }) => {
               Support
             </h2>
             <span style={{ textAlign: "left" }}>
-              We’re available Monday to Friday from 8:00AM To 8:00pm EST
+              We’re available Monday to Friday from 8:00AM To 8:00PM EST
             </span>
             <br />
             <br />
@@ -105,8 +105,15 @@ export default withUserLayout(({ pageWidth }) => {
                 // borderRadius: "100%",
               }}
             >
-              <div
+              <Card
+                hoverable
+                bordered={false}
                 style={{
+                  background: "transparent",
+                  borderRadius: "100%",
+                  overflow: "hidden",
+                }}
+                bodyStyle={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -116,9 +123,16 @@ export default withUserLayout(({ pageWidth }) => {
                 }}
               >
                 <MessageFilled style={{ color: "#0644A2", fontSize: 25 }} />
-              </div>
-              <div
+              </Card>
+              <Card
+                hoverable
+                bordered={false}
                 style={{
+                  background: "transparent",
+                  borderRadius: "100%",
+                  overflow: "hidden",
+                }}
+                bodyStyle={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -128,9 +142,16 @@ export default withUserLayout(({ pageWidth }) => {
                 }}
               >
                 <PhoneFilled style={{ color: "#0644A2", fontSize: 25 }} />
-              </div>
-              <div
+              </Card>
+              <Card
+                hoverable
+                bordered={false}
                 style={{
+                  background: "transparent",
+                  borderRadius: "100%",
+                  overflow: "hidden",
+                }}
+                bodyStyle={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -140,7 +161,7 @@ export default withUserLayout(({ pageWidth }) => {
                 }}
               >
                 <MailFilled style={{ color: "#0644A2", fontSize: 25 }} />
-              </div>
+              </Card>
             </div>
           </Col>
           <Col
