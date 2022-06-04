@@ -5,7 +5,7 @@ import "antd/dist/antd.min.css";
 // import "./styles/Home.module.css";
 export * from "@ant-design/icons";
 export * from "antd";
-export { weekdays } from "moment";
+export { months, weekdays } from "moment";
 // export { withLayout, withUserLayout } from "../../apps/web/components/Layout";
 export { AddressComp } from "./AddressComp";
 export { BottomDrawer } from "./BottomDrawer";

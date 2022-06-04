@@ -498,10 +498,10 @@ export const useCustomRadioGroup = (options: Array<{label: String, value: String
   return [
     value,
     () => (
-      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} bodyStyle={{paddingTop: 10}} title={<h4 style={{textAlign: "left", margin: 0}}>{title}</h4>}>
+      <Card style={{width: "100%", borderRadius: 10}} headStyle={{borderBottom: 'none'}} bodyStyle={{paddingTop: 10}} title={typeof title === "undefined"? null : <h4 style={{textAlign: "left", margin: 0}}>{title}</h4>}>
         <Radio.Group optionType="button" size="large" defaultValue={defaultVal} value={value} onChange={e => setValue(e.target.value)} style={{width: "100%", backgroundColor: ""}}>
           {
-            options.map((item) => <Radio.Button key={item.value.toString()} style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === value && <CheckOutlined style={{color: "#0644A2", fontSize: 24, marginLeft: 120 }} />}</Radio.Button> )
+            options.map((item) => <Radio.Button key={item.value.toString()} style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", border: 0, outline: "none"}} type="text" value={item.value}>{item.label} {item.value === value && <CheckOutlined style={{color: "#0644A2", fontSize: 18, marginLeft: 100 }} />}</Radio.Button> )
           }
         </Radio.Group>
       </Card>
