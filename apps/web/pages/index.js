@@ -10,7 +10,7 @@ function Index() {
 
   // Destructure the queries
   const { signup, login, email } = router.query;
-  console.info(signup, login, email);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -96,7 +96,7 @@ const Signup = ({ router }) => (
       block
       onClick={() => {
         // Collect users data and direct to onboarding process
-        router.push("/onboarding/");
+        router.push("/onboarding/?kyc");
       }}
     >
       Get Started
@@ -136,7 +136,7 @@ const Login = ({ router }) => (
       size="large"
       block
       onClick={() => {
-        // Collect users data and direct to onboarding process
+        // Collect users data and direct to home page
         router.push("/home/");
       }}
     >
