@@ -130,6 +130,7 @@ function OnboardingKYC() {
               className={styles.ghost_btn}
               size="large"
               style={{ flex: 1 }}
+              onClick={() => router.back()}
             >
               Cancel
             </Button>
@@ -206,6 +207,7 @@ function OnboardingKYC() {
               className={styles.ghost_btn}
               size="large"
               style={{ flex: 1 }}
+              onClick={() => router.back()}
             >
               Back
             </Button>
@@ -278,6 +280,7 @@ function OnboardingKYC() {
               className={styles.ghost_btn}
               size="large"
               style={{ flex: 1 }}
+              onClick={() => router.back()}
             >
               Back
             </Button>
@@ -355,6 +358,7 @@ function OnboardingKYC() {
               className={styles.ghost_btn}
               size="large"
               style={{ flex: 1 }}
+              onClick={() => router.back()}
             >
               Back
             </Button>
