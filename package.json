@@ -17,6 +17,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "cypress": "^10.0.2",
     "prettier": "latest",
     "turbo": "latest"
   },
