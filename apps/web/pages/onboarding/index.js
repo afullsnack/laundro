@@ -6,12 +6,15 @@ import {
   Avatar,
   Button,
   Card,
+  Col,
   Image,
   Input,
   List,
   months,
+  Row,
   ScheduleCalender,
   Select,
+  Tabs,
 } from "ui";
 import { useCustomRadioGroup } from "ui/hooks";
 import { withLayout } from "../../components/Layout";
@@ -118,6 +121,7 @@ function OnboardingKYC() {
       )}
 
       {typeof handbag !== "undefined" && <HandBag router={router} />}
+
       {typeof cleaningPref !== "undefined" && (
         <CleaningPref
           router={router}
@@ -127,6 +131,8 @@ function OnboardingKYC() {
       )}
 
       {typeof pickupDate !== "undefined" && <PickupDate router={router} />}
+
+      {typeof final !== "undefined" && <Final router={router} />}
     </div>
   );
 }
@@ -750,6 +756,154 @@ const PickupDate = ({ router }) => {
           By clicking this button, I agree to the{" "}
           <a href="#">Terms Of Service</a> and <a href="#">Privacy Policy</a>
         </span> */}
+    </main>
+  );
+};
+
+const Final = ({ router }) => {
+  const [tabKey, setTabKey] = useState("1");
+
+  return (
+    <main className={styles.main}>
+      <div style={{ width: "100%" }}>
+        <Tabs defaultActiveKey={tabKey} onChange={(key) => setTabKey(key)}>
+          <Tabs.TabPane
+            key="1"
+            tab="Billing"
+            style={{
+              display: "flex",
+              flexFlow: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Input.Group size="large">
+              <Row style={{ width: "100%", margin: 0, padding: 0 }}>
+                <Col span={13}>
+                  <Input
+                    className={styles.no_textfield_hover_style}
+                    style={{
+                      borderRight: 0,
+                      textAlign: "left",
+                      borderTopLeftRadius: "25pt",
+                      borderBottomLeftRadius: "25pt",
+                      // background: "#F5F5FB",
+                      outline: 0,
+                    }}
+                    size="large"
+                    type="text"
+                    placeholder="Card Number"
+                  />
+                </Col>
+                <Col span={7}>
+                  <Input
+                    className={styles.no_textfield_hover_style}
+                    style={{
+                      borderRight: 0,
+                      borderLeft: 0,
+                      textAlign: "left",
+                      outline: 0,
+                    }}
+                    size="large"
+                    type="text"
+                    placeholder="MM/YY"
+                  />
+                </Col>
+                <Col span={4}>
+                  <Input
+                    className={styles.no_textfield_hover_style}
+                    style={{
+                      borderLeft: 0,
+                      textAlign: "left",
+                      borderTopRightRadius: "25pt",
+                      borderBottomRightRadius: "25pt",
+                      outline: 0,
+                    }}
+                    size="large"
+                    type="text"
+                    placeholder="CVC"
+                  />
+                </Col>
+              </Row>
+            </Input.Group>
+            <br />
+            <Input
+              className={styles.textfield_rounded}
+              size="large"
+              type="text"
+              placeholder="Create Password"
+            />
+            <br />
+            <Input
+              className={styles.textfield_rounded}
+              size="large"
+              type="text"
+              placeholder="Promo or Referral Code"
+              suffix={
+                <Button
+                  className={styles.normal_btn}
+                  size="middle"
+                  onClick={() => {}}
+                >
+                  Apply
+                </Button>
+              }
+            />
+            <br />
+            <Input
+              className={styles.textfield_rounded}
+              size="large"
+              type="text"
+              placeholder="Gift Card Code"
+              suffix={
+                <Button
+                  className={styles.normal_btn}
+                  size="middle"
+                  onClick={() => {}}
+                >
+                  Apply
+                </Button>
+              }
+            />
+          </Tabs.TabPane>
+          <Tabs.TabPane key="2" tab="Summary"></Tabs.TabPane>
+          <Tabs.TabPane key="3" tab="Rewards"></Tabs.TabPane>
+        </Tabs>
+      </div>
+      <br />
+      <br />
+      <div
+        style={{
+          display: "flex",
+          flexFlow: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
+        <Button
+          className={styles.ghost_btn}
+          size="large"
+          style={{ flex: 1 }}
+          onClick={() => router.back()}
+        >
+          Back
+        </Button>
+        <Button
+          className={styles.normal_btn}
+          size="large"
+          style={{ flex: 2, marginLeft: 8 }}
+          onClick={() => router.push("/home/")}
+        >
+          Continue
+        </Button>
+      </div>
+      <style jsx global>{`
+        .ant-input,
+        .ant-input-lg {
+          background: #0a0a0a0f;
+        }
+      `}</style>
     </main>
   );
 };
