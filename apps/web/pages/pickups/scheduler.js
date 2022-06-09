@@ -83,7 +83,9 @@ export default withUserLayout(() => {
               justifyContent: "center",
             }}
           >
-            <ScheduleCalender onDatePicked={(day) => setDay(day)} />
+            <ScheduleCalender
+              onDatePicked={(day) => setDay(weekdays()[day.getDay()])}
+            />
           </Col>
           <Col
             xs={{ span: 24 }}

@@ -11,7 +11,7 @@ export default withUserLayout(() => {
       <Head>
         <title>Users profile home</title>
         <meta name="description" content="User schedule dashboard" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>
