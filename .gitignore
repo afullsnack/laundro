@@ -36,3 +36,5 @@ yarn-error.log*
 cypress.json
 cypress/
 /cypress/
+cypress.config.ts
+cypress.config.js
