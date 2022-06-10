@@ -34,6 +34,7 @@ importers:
       next-auth: ^4.3.4
       next-pwa: ^5.4.4
       next-transpile-modules: 9.0.0
+      pg: 8.6.0
       react: 17.0.2
       react-dom: 17.0.2
       tsconfig: workspace:*
@@ -43,6 +44,7 @@ importers:
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
       next-auth: 4.3.4_react-dom@17.0.2+react@17.0.2
       next-pwa: 5.5.2_next@12.0.8
+      pg: 8.6.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       ui: link:../../packages/ui
@@ -9136,8 +9138,8 @@ packages:
       jose: 4.8.1
       oauth: 0.9.15
       openid-client: 5.1.6
-      preact: 10.7.2
-      preact-render-to-string: 5.2.0_preact@10.7.2
+      preact: 10.7.3
+      preact-render-to-string: 5.2.0_preact@10.7.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       uuid: 8.3.2
@@ -9395,7 +9397,7 @@ packages:
     dev: false
 
   /oauth/0.9.15:
-    resolution: {integrity: sha1-vR/vr2hslrdUda7VGWQS/2DPucE=}
+    resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
     dev: false
 
   /object-assign/4.1.1:
@@ -10140,7 +10142,7 @@ packages:
     dev: false
 
   /postgres-bytea/1.0.0:
-    resolution: {integrity: sha1-AntTPAqokOJtFy1Hz5zOzFIazTU=}
+    resolution: {integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -10156,17 +10158,17 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /preact-render-to-string/5.2.0_preact@10.7.2:
+  /preact-render-to-string/5.2.0_preact@10.7.3:
     resolution: {integrity: sha512-+RGwSW78Cl+NsZRUbFW1MGB++didsfqRk+IyRVTaqy+3OjtpKK/6HgBtfszUX0YXMfo41k2iaQSseAHGKEwrbg==}
     peerDependencies:
       preact: '>=10'
     dependencies:
-      preact: 10.7.2
+      preact: 10.7.3
       pretty-format: 3.8.0
     dev: false
 
-  /preact/10.7.2:
-    resolution: {integrity: sha512-GLjn0I3r6ka+NvxJUppsVFqb4V0qDTEHT/QxHlidPuClGaxF/4AI2Qti4a0cv3XMh5n1+D3hLScW10LRIm5msQ==}
+  /preact/10.7.3:
+    resolution: {integrity: sha512-giqJXP8VbtA1tyGa3f1n9wiN7PrHtONrDyE3T+ifjr/tTkg+2N4d/6sjC9WyJKv8wM7rOYDveqy5ZoFmYlwo4w==}
     dev: false
 
   /prebuild-install/7.1.0:
@@ -10212,7 +10214,7 @@ packages:
     dev: false
 
   /pretty-format/3.8.0:
-    resolution: {integrity: sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=}
+    resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
   /pretty-time/1.1.0:

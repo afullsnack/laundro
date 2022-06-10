@@ -6,7 +6,9 @@ import {
   Avatar,
   Button,
   Card,
+  Checkbox,
   Col,
+  Collapse,
   Image,
   Input,
   List,
@@ -15,10 +17,13 @@ import {
   ScheduleCalender,
   Select,
   Tabs,
+  Timeline,
 } from "ui";
 import { useCustomRadioGroup } from "ui/hooks";
 import { withLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
+
+const { Panel } = Collapse;
 
 function OnboardingKYC() {
   const router = useRouter();
@@ -766,108 +771,168 @@ const Final = ({ router }) => {
   return (
     <main className={styles.main}>
       <div style={{ width: "100%" }}>
-        <Tabs defaultActiveKey={tabKey} onChange={(key) => setTabKey(key)}>
-          <Tabs.TabPane
-            key="1"
-            tab="Billing"
-            style={{
-              display: "flex",
-              flexFlow: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Input.Group size="large">
-              <Row style={{ width: "100%", margin: 0, padding: 0 }}>
-                <Col span={13}>
-                  <Input
-                    className={styles.no_textfield_hover_style}
-                    style={{
-                      borderRight: 0,
-                      textAlign: "left",
-                      borderTopLeftRadius: "25pt",
-                      borderBottomLeftRadius: "25pt",
-                      // background: "#F5F5FB",
-                      outline: 0,
-                    }}
-                    size="large"
-                    type="text"
-                    placeholder="Card Number"
-                  />
-                </Col>
-                <Col span={7}>
-                  <Input
-                    className={styles.no_textfield_hover_style}
-                    style={{
-                      borderRight: 0,
-                      borderLeft: 0,
-                      textAlign: "left",
-                      outline: 0,
-                    }}
-                    size="large"
-                    type="text"
-                    placeholder="MM/YY"
-                  />
-                </Col>
-                <Col span={4}>
-                  <Input
-                    className={styles.no_textfield_hover_style}
-                    style={{
-                      borderLeft: 0,
-                      textAlign: "left",
-                      borderTopRightRadius: "25pt",
-                      borderBottomRightRadius: "25pt",
-                      outline: 0,
-                    }}
-                    size="large"
-                    type="text"
-                    placeholder="CVC"
-                  />
-                </Col>
-              </Row>
-            </Input.Group>
-            <br />
-            <Input
-              className={styles.textfield_rounded}
-              size="large"
-              type="text"
-              placeholder="Create Password"
-            />
-            <br />
-            <Input
-              className={styles.textfield_rounded}
-              size="large"
-              type="text"
-              placeholder="Promo or Referral Code"
-              suffix={
-                <Button
-                  className={styles.normal_btn}
-                  size="middle"
-                  onClick={() => {}}
-                >
-                  Apply
-                </Button>
-              }
-            />
-            <br />
-            <Input
-              className={styles.textfield_rounded}
-              size="large"
-              type="text"
-              placeholder="Gift Card Code"
-              suffix={
-                <Button
-                  className={styles.normal_btn}
-                  size="middle"
-                  onClick={() => {}}
-                >
-                  Apply
-                </Button>
-              }
-            />
+        <Tabs
+          // defaultActiveKey={tabKey}
+          activeKey={tabKey}
+          onChange={(key) => setTabKey(key)}
+        >
+          <Tabs.TabPane key="1" tab="Billing" disabled={tabKey !== "1"}>
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <Input.Group size="large">
+                <Row style={{ width: "100%", margin: 0, padding: 0 }}>
+                  <Col span={13}>
+                    <Input
+                      className={styles.no_textfield_hover_style}
+                      style={{
+                        borderRight: 0,
+                        textAlign: "left",
+                        borderTopLeftRadius: "25pt",
+                        borderBottomLeftRadius: "25pt",
+                        // background: "#F5F5FB",
+                        outline: 0,
+                      }}
+                      size="large"
+                      type="text"
+                      placeholder="Card Number"
+                    />
+                  </Col>
+                  <Col span={7}>
+                    <Input
+                      className={styles.no_textfield_hover_style}
+                      style={{
+                        borderRight: 0,
+                        borderLeft: 0,
+                        textAlign: "left",
+                        outline: 0,
+                      }}
+                      size="large"
+                      type="text"
+                      placeholder="MM/YY"
+                    />
+                  </Col>
+                  <Col span={4}>
+                    <Input
+                      className={styles.no_textfield_hover_style}
+                      style={{
+                        borderLeft: 0,
+                        textAlign: "left",
+                        borderTopRightRadius: "25pt",
+                        borderBottomRightRadius: "25pt",
+                        outline: 0,
+                      }}
+                      size="large"
+                      type="text"
+                      placeholder="CVC"
+                    />
+                  </Col>
+                </Row>
+              </Input.Group>
+              <br />
+              <Input
+                className={styles.textfield_rounded}
+                size="large"
+                type="text"
+                placeholder="Create Password"
+              />
+              <br />
+              <Input
+                className={styles.textfield_rounded}
+                size="large"
+                type="text"
+                placeholder="Promo or Referral Code"
+                suffix={
+                  <Button
+                    className={styles.normal_btn}
+                    size="middle"
+                    onClick={() => {}}
+                  >
+                    Apply
+                  </Button>
+                }
+              />
+              <br />
+              <Input
+                className={styles.textfield_rounded}
+                size="large"
+                type="text"
+                placeholder="Gift Card Code"
+                suffix={
+                  <Button
+                    className={styles.normal_btn}
+                    size="middle"
+                    onClick={() => {}}
+                  >
+                    Apply
+                  </Button>
+                }
+              />
+            </div>
           </Tabs.TabPane>
-          <Tabs.TabPane key="2" tab="Summary"></Tabs.TabPane>
-          <Tabs.TabPane key="3" tab="Rewards"></Tabs.TabPane>
+          <Tabs.TabPane key="2" tab="Summary" disabled={tabKey !== "2"}>
+            <Collapse
+              bordered={false}
+              defaultActiveKey={["1"]}
+              expandIconPosition="end"
+            >
+              <Panel header="My Welcome Kit" key="1">
+                Lorem ipsum
+              </Panel>
+              <Panel header="My Preferences" key="2">
+                Lorem ipsum
+              </Panel>
+              <Panel header="My Pricing" key="3">
+                Lorem ipsum
+              </Panel>
+              <Panel header="My Schedule" key="4">
+                Lorem ipsum
+              </Panel>
+            </Collapse>
+          </Tabs.TabPane>
+          <Tabs.TabPane key="3" tab="Rewards" disabled={tabKey !== "3"}>
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <h2>Rewards</h2>
+              <span>Easy to earn. Easy to Redeem, Easy to love</span>
+              <br />
+              <br />
+              <Timeline>
+                <Timeline.Item color="#0644A2">
+                  <p style={{ textAlign: "left" }}>
+                    Earn 2 points for every N500 spent. Points never expire
+                  </p>
+                </Timeline.Item>
+                <Timeline.Item color="#0690A2">
+                  <p style={{ textAlign: "left" }}>
+                    Unlock members-only offers Including free services and more
+                  </p>
+                </Timeline.Item>
+                <Timeline.Item color="#D0588A">
+                  <p style={{ textAlign: "left" }}>
+                    Automatically redeem N3000 for every 500 Points earned
+                  </p>
+                </Timeline.Item>
+              </Timeline>
+              <br />
+              <Checkbox onChange={(e) => console.log(e.target.checked)}>
+                Enroll me in the free rewards program
+              </Checkbox>
+            </div>
+          </Tabs.TabPane>
         </Tabs>
       </div>
       <br />
@@ -885,7 +950,17 @@ const Final = ({ router }) => {
           className={styles.ghost_btn}
           size="large"
           style={{ flex: 1 }}
-          onClick={() => router.back()}
+          onClick={() => {
+            if (tabKey === "1") {
+              router.back();
+            } else {
+              tabKey === "3"
+                ? setTabKey("2")
+                : tabKey === "2"
+                ? setTabKey("1")
+                : null;
+            }
+          }}
         >
           Back
         </Button>
@@ -893,9 +968,19 @@ const Final = ({ router }) => {
           className={styles.normal_btn}
           size="large"
           style={{ flex: 2, marginLeft: 8 }}
-          onClick={() => router.push("/home/")}
+          onClick={() => {
+            if (tabKey === "3") {
+              router.push("/home/");
+            } else {
+              tabKey === "1"
+                ? setTabKey("2")
+                : tabKey === "2"
+                ? setTabKey("3")
+                : null;
+            }
+          }}
         >
-          Continue
+          {tabKey === "3" ? "Complete" : "Continue"}
         </Button>
       </div>
       <style jsx global>{`

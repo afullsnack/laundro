@@ -1,15 +1,28 @@
+import { getSession, signIn } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Button, Image, Input } from "ui";
 import { withLayout } from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
-function Index() {
+function Index({ user }) {
   const router = useRouter();
+  // const { data: session, status } = useSession();
 
   // Destructure the queries
   const { signup, login, email } = router.query;
+
+  useEffect(() => {
+    // Check if the users session is signed in
+    console.log(user, "Users session data");
+    if (user) {
+      console.log(user, "Users session data");
+      return router.push("/home/");
+      // And maybe redirect to the home page
+    }
+  }, [user]);
 
   return (
     <div className={styles.container}>
@@ -50,12 +63,15 @@ function Index() {
           </Button>
           <br />
           <Button
+            // href="/api/auth/signin"
             type="ghost"
             className={styles.normal_btn}
             size="large"
             block
-            onClick={() => {
+            onClick={(e) => {
               // Call the next auth gmail login function
+              e.preventDefault();
+              signIn("google", { callbackUrl: "http://localhost:3000/home/" });
             }}
           >
             Log in Via Gmail
@@ -151,5 +167,19 @@ const Login = ({ router }) => (
     </span>
   </main>
 );
+
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+  console.log(session, "Server side session");
+
+  if (!session) return { props: {} };
+
+  const { user } = session;
+  return {
+    props: {
+      user,
+    },
+  };
+};
 
 export default withLayout(Index);
