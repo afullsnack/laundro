@@ -1,11 +1,24 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Avatar, Button, Card, Col, Input, Row } from "ui";
 import { withUserLayout } from "../../components/Layout";
 import styles from "../../styles/Home.module.css";
 
-export default withUserLayout(() => {
+function Home() {
   const router = useRouter();
+  const [userData, setUserData] = useState();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    console.log(session, status);
+    if (status === "authenticated") {
+      const { user } = session;
+      if (typeof user !== "undefined") setUserData(user);
+    }
+  }, [status]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,7 +49,7 @@ export default withUserLayout(() => {
               justifyContent: "center",
             }}
           >
-            <h2 style={{ margin: 0 }}>Hi Uba</h2>
+            <h2 style={{ margin: 0 }}>Hi {userData?.firstName}</h2>
             <span>Glad to have you back</span>
           </Col>
           <Col
@@ -49,7 +62,11 @@ export default withUserLayout(() => {
               justifyContent: "center",
             }}
           >
-            <Avatar src="/icon-384x384.png" shape="circle" size="100%" />
+            <Avatar
+              src={userData?.picture || "/icon-384x384.png"}
+              shape="circle"
+              size="100%"
+            />
           </Col>
           <Col span={24}>
             <Card style={{ borderRadius: 5 }}>
@@ -144,4 +161,21 @@ export default withUserLayout(() => {
       </main>
     </div>
   );
-});
+}
+
+export default withUserLayout(Home);
+
+// export const getServerSideProps = async (ctx) => {
+//   const session = await getSession(ctx);
+//   console.log(session, "Server side session");
+
+//   if (!session) return { props: {} };
+
+//   const { user, jwt } = session;
+//   return {
+//     props: {
+//       user,
+//       jwt,
+//     },
+//   };
+// };
