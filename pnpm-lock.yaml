@@ -28,6 +28,7 @@ importers:
     specifiers:
       '@types/node': ^17.0.12
       '@types/react': 17.0.37
+      cookie: ^0.5.0
       eslint: 7.32.0
       eslint-config-custom: workspace:*
       next: 12.0.8
@@ -36,17 +37,20 @@ importers:
       next-transpile-modules: 9.0.0
       pg: 8.6.0
       react: 17.0.2
+      react-cookie: ^4.1.1
       react-dom: 17.0.2
       react-query: ^3.39.1
       tsconfig: workspace:*
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
+      cookie: 0.5.0
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
       next-auth: 4.3.4_react-dom@17.0.2+react@17.0.2
       next-pwa: 5.5.2_next@12.0.8
       pg: 8.6.0
       react: 17.0.2
+      react-cookie: 4.1.1_react@17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-query: 3.39.1_react-dom@17.0.2+react@17.0.2
       ui: link:../../packages/ui
@@ -2791,6 +2795,10 @@ packages:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
       '@types/node': 17.0.31
+    dev: false
+
+  /@types/cookie/0.3.3:
+    resolution: {integrity: sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==}
     dev: false
 
   /@types/eslint-scope/3.7.3:
@@ -10890,6 +10898,17 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
+  /react-cookie/4.1.1_react@17.0.2:
+    resolution: {integrity: sha512-ffn7Y7G4bXiFbnE+dKhHhbP+b8I34mH9jqnm8Llhj89zF4nPxPutxHT1suUqMeCEhLDBI7InYwf1tpaSoK5w8A==}
+    peerDependencies:
+      react: '>= 16.3.0'
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.1
+      hoist-non-react-statics: 3.3.2
+      react: 17.0.2
+      universal-cookie: 4.0.4
+    dev: false
+
   /react-copy-to-clipboard/5.1.0_react@17.0.2:
     resolution: {integrity: sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==}
     peerDependencies:
@@ -13050,6 +13069,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       crypto-random-string: 2.0.0
+    dev: false
+
+  /universal-cookie/4.0.4:
+    resolution: {integrity: sha512-lbRVHoOMtItjWbM7TwDLdl8wug7izB0tq3/YVKhT/ahB4VDvWMyvnADfnJI8y6fSvsjh51Ix7lTGC6Tn4rMPhw==}
+    dependencies:
+      '@types/cookie': 0.3.3
+      cookie: 0.4.2
     dev: false
 
   /universalify/2.0.0:
