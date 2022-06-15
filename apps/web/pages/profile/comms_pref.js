@@ -143,7 +143,7 @@ export default withUserLayout(({ pageWidth }) => {
             width: "100%",
             marginLeft: 0,
             marginRight: 0,
-            padding: "0 0 40px 0",
+            padding: "0 0 60px 0",
             // padding: 0,
             overflowY: "scroll",
           }}

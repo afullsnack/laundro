@@ -1,8 +1,8 @@
-import { getSession, signIn } from "next-auth/react";
+// import { getSession, signIn } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Button, Image, Input } from "ui";
 import { withLayout } from "../components/Layout";
 import styles from "../styles/Home.module.css";
@@ -14,15 +14,15 @@ function Index({ user }) {
   // Destructure the queries
   const { signup, login, email } = router.query;
 
-  useEffect(() => {
-    // Check if the users session is signed in
-    console.log(user, "Users session data");
-    if (user) {
-      console.log(user, "Users session data");
-      return router.push("/home/");
-      // And maybe redirect to the home page
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   // Check if the users session is signed in
+  //   console.log(user, "Users session data");
+  //   if (user) {
+  //     console.log(user, "Users session data");
+  //     return router.push("/home/");
+  //     // And maybe redirect to the home page
+  //   }
+  // }, [user]);
 
   return (
     <div className={styles.container}>
@@ -70,8 +70,9 @@ function Index({ user }) {
             block
             onClick={(e) => {
               // Call the next auth gmail login function
-              e.preventDefault();
-              signIn("google", { callbackUrl: "http://localhost:3000/home/" });
+              // e.preventDefault();
+              // signIn("google", { callbackUrl: "http://localhost:3000/home/" });
+              router.push("/home/");
             }}
           >
             Log in Via Gmail
@@ -168,18 +169,18 @@ const Login = ({ router }) => (
   </main>
 );
 
-export const getServerSideProps = async (ctx) => {
-  const session = await getSession(ctx);
-  console.log(session, "Server side session");
+// export const getServerSideProps = async (ctx) => {
+//   const session = await getSession(ctx);
+//   console.log(session, "Server side session");
 
-  if (!session) return { props: {} };
+//   if (!session) return { props: {} };
 
-  const { user } = session;
-  return {
-    props: {
-      user,
-    },
-  };
-};
+//   const { user } = session;
+//   return {
+//     props: {
+//       user,
+//     },
+//   };
+// };
 
 export default withLayout(Index);
