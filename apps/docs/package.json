@@ -13,7 +13,8 @@
     "@strapi/plugin-i18n": "4.1.9",
     "@strapi/plugin-users-permissions": "4.1.9",
     "@strapi/strapi": "4.1.9",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "pg-native": "^3.0.0"
   },
   "author": {
     "name": "A Strapi developer"
