@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_welcome_kit_welcome_kits",
+  "info": {
+    "displayName": "Welcome Kit",
+    "icon": "weight-hanging"
+  },
+  "options": {},
+  "attributes": {
+    "Bag": {
+      "type": "enumeration",
+      "enum": [
+        "wash_dry_fold",
+        "dry_cleaning",
+        "both"
+      ]
+    },
+    "bag_bundle": {
+      "type": "enumeration",
+      "enum": [
+        "pay_as_you_go",
+        "bag_bundle_5",
+        "bag_bundle_10"
+      ]
+    },
+    "get_wash_dry_handbag": {
+      "type": "enumeration",
+      "enum": [
+        "no",
+        "yes"
+      ]
+    }
+  }
+}

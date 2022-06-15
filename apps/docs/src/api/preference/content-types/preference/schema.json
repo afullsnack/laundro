@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "preferences",
+  "info": {
+    "singularName": "preference",
+    "pluralName": "preferences",
+    "displayName": "Preference",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cleaning": {
+      "displayName": "Cleaning Prefs",
+      "type": "component",
+      "repeatable": false,
+      "component": "cleaning-prefs.cleaning-prefs"
+    },
+    "communication": {
+      "displayName": "Communication Prefs",
+      "type": "component",
+      "repeatable": false,
+      "component": "communication-prefs.communication-prefs"
+    }
+  }
+}

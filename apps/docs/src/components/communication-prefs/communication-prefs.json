@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_communication_prefs_communication_prefs",
+  "info": {
+    "displayName": "Communication Prefs",
+    "icon": "phone-square"
+  },
+  "options": {},
+  "attributes": {
+    "contact_method": {
+      "type": "enumeration",
+      "enum": [
+        "email",
+        "call",
+        "chat"
+      ]
+    },
+    "push_notifications": {
+      "type": "enumeration",
+      "enum": [
+        "account_alerts",
+        "arrival_notifications",
+        "promotional_offers"
+      ]
+    },
+    "sms_notification": {
+      "type": "enumeration",
+      "enum": [
+        "account_alerts",
+        "arrival_notifications",
+        "promotional_offers"
+      ]
+    },
+    "email_notifications": {
+      "type": "enumeration",
+      "enum": [
+        "account_alerts",
+        "arrival_notifications",
+        "promotional_offers"
+      ]
+    }
+  }
+}
