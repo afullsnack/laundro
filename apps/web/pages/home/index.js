@@ -49,7 +49,7 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <h2 style={{ margin: 0 }}>Hi {userData?.firstName}</h2>
+            <h2 style={{ margin: 0 }}>Hi Uba</h2>
             <span>Glad to have you back</span>
           </Col>
           <Col
