@@ -30,7 +30,7 @@ export default withUserLayout(() => {
       <Head>
         <title>Schedule a pickup extra info</title>
         <meta name="description" content="Schedule a pickup extra info" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

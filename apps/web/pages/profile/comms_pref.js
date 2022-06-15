@@ -133,7 +133,7 @@ export default withUserLayout(({ pageWidth }) => {
           name="description"
           content="The users Communication Preferences"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

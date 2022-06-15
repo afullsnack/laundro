@@ -33,7 +33,7 @@ export default withUserLayout(({ pageWidth }) => {
           name="description"
           content="Upcoming pickups you've already set"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

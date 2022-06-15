@@ -48,7 +48,7 @@ export default withUserLayout(({ pageWidth }) => {
       <Head>
         <title>User profile - Bag Request</title>
         <meta name="description" content="The users bag request" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

@@ -32,7 +32,7 @@ function Index({ user }) {
           name="description"
           content="Net Laundro, laundry services, pickups, schedule"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       {typeof signup === "undefined" && typeof login === "undefined" && (

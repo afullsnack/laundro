@@ -42,7 +42,7 @@ export default withUserLayout(({ pageWidth }) => {
       <Head>
         <title>Support</title>
         <meta name="description" content="User support available" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

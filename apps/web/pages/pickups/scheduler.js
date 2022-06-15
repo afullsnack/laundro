@@ -33,7 +33,7 @@ export default withUserLayout(() => {
           name="description"
           content="Schedule a pickup date for your laundry"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

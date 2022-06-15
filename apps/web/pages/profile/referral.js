@@ -50,7 +50,7 @@ export default withUserLayout(({ pageWidth }) => {
       <Head>
         <title>User profile - Refer a friend</title>
         <meta name="description" content="Refer a friend and win a prize" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>
