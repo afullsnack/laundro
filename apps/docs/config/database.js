@@ -1,3 +1,4 @@
+console.log("***READ FROM DEVELOPMENT***");
 module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
