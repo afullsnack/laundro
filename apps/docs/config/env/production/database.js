@@ -1,11 +1,11 @@
 const parse = require("pg-connection-string").parse;
 const config = parse(process.env.DATABASE_URL);
 
-console.log("***READ FROM PRODUCTION***");
+console.log("***READ FROM PRODUCTION***", JSON.stringify(config, null, 2));
 
 module.export = ({ env }) => ({
   connection: {
-    client: "postgresql",
+    client: "postgres",
     connection: {
       host: config.host,
       port: config.port,
@@ -16,6 +16,9 @@ module.export = ({ env }) => ({
         rejectUnauthorized: false,
       },
     },
+    // options: {
+    //   ssl: false,
+    // },
     debug: false,
   },
 });
