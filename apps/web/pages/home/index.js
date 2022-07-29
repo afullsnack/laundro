@@ -18,8 +18,8 @@ function Home() {
   const queryClient = useQueryClient();
   const [{ isLoading, data: pickups }] = useQueries([
     {
-      queryKey: ["getPickups"],
-      queryFn: () => getPickups(),
+      queryKey: ["getPickups", session?.jwt],
+      queryFn: () => getPickups({ token: session?.jwt }),
       onSuccess(data) {
         console.log(data, "Data from fetching pickups");
       },
@@ -30,7 +30,7 @@ function Home() {
   ]);
 
   useEffect(() => {
-    console.log(session, status);
+    console.log(session, session?.jwt, status);
     if (status === "authenticated") {
       const { user } = session;
       if (typeof user !== "undefined") setUserData(user);

@@ -35,6 +35,10 @@ const options = {
     jwt: true,
   },
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log(user, account, profile, email, credentials, "SIGNIN USER");
+      return true;
+    },
     async jwt({ token, user, account, profile, isNewUser }) {
       const isSignIn = account ? true : false;
       console.log(token, user, account, profile, isNewUser, "NEW USER");
