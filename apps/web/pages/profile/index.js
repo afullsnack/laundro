@@ -29,7 +29,7 @@ export default withUserLayout(({ pageWidth }) => {
     [
       () => {
         /*Logout function handle some cleanup*/
-        signOut(); //Take user back to the login page
+        signOut({ callbackUrl: "http://localhost:3000/?login" }); //Take user back to the login page
       },
       () => logoutDrawer.close(),
     ],

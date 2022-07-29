@@ -2,8 +2,10 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useQueries, useQueryClient } from "react-query";
 import { Avatar, Button, Card, Col, Input, Row } from "ui";
 import { withUserLayout } from "../../components/Layout";
+import { getPickups } from "../../lib/query";
 import styles from "../../styles/Home.module.css";
 
 function Home() {
@@ -11,11 +13,27 @@ function Home() {
   const [userData, setUserData] = useState();
   const { data: session, status } = useSession();
 
+  // Setup query to get pickups and schedules
+  const queryClient = useQueryClient();
+  const [{ isLoading, data: pickups }] = useQueries([
+    {
+      queryKey: ["getPickups"],
+      queryFn: () => getPickups(),
+      onSuccess(data) {
+        console.log(data, "Data from fetching pickups");
+      },
+      onError(err) {
+        console.error(err, "An error occurred while fetching  pickups");
+      },
+    },
+  ]);
+
   useEffect(() => {
     console.log(session, status);
     if (status === "authenticated") {
       const { user } = session;
       if (typeof user !== "undefined") setUserData(user);
+      queryClient.invalidateQueries("getPickups");
     }
   }, [status]);
 
@@ -49,7 +67,7 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <h2 style={{ margin: 0 }}>Hi Uba</h2>
+            <h2 style={{ margin: 0 }}>Hi {userData?.firstName || "Uba"}</h2>
             <span>Glad to have you back</span>
           </Col>
           <Col
@@ -63,29 +81,34 @@ function Home() {
             }}
           >
             <Avatar
-              src={userData?.picture || "/icon-384x384.png"}
+              src={userData?.image || "/icon-384x384.png"}
               shape="circle"
               size="100%"
             />
           </Col>
           <Col span={24}>
             <Card style={{ borderRadius: 5 }}>
-              <h3 style={{ margin: 0, fontWeight: "bold" }}>
-                No Pickup Scheduled
-              </h3>
-              <br />
-              <span>
-                Looks like you don’t have a pick up scheduled. Schedule one now
-              </span>
-              <br />
-              <br />
-              <Button
-                className={styles.normal_btn}
-                size="large"
-                onClick={() => router.push("/pickups/scheduler")}
-              >
-                Schedule Pick Up
-              </Button>
+              {pickups?.data?.length <= 0 && (
+                <>
+                  <h3 style={{ margin: 0, fontWeight: "bold" }}>
+                    No Pickup Scheduled
+                  </h3>
+                  <br />
+                  <span>
+                    Looks like you don’t have a pick up scheduled. Schedule one
+                    now
+                  </span>
+                  <br />
+                  <br />
+                  <Button
+                    className={styles.normal_btn}
+                    size="large"
+                    onClick={() => router.push("/pickups/scheduler")}
+                  >
+                    Schedule Pick Up
+                  </Button>
+                </>
+              )}
             </Card>
           </Col>
           <Col
