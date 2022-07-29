@@ -36,9 +36,10 @@ const options = {
   },
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
-      const isSignIn = user ? true : false;
+      const isSignIn = account ? true : false;
+      console.log(token, user, account, profile, isNewUser, "NEW USER");
 
-      if (account) {
+      if (isSignIn) {
         token.accessToken = account.access_token;
       }
       if (isSignIn) {
