@@ -41,7 +41,7 @@ const options = {
       if (account) {
         token.accessToken = account.access_token;
       }
-      if (isSignIn || process.env.NODE_ENV === "production") {
+      if (isSignIn) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/${account.provider}/callback?access_token=${account?.access_token}`
         );
