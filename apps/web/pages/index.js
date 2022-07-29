@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Button, Image, Input } from "ui";
 import { withLayout } from "../components/Layout";
+import { MAIN_URL } from "../lib/global";
 import styles from "../styles/Home.module.css";
 
 function Index({ user }) {
@@ -71,8 +72,7 @@ function Index({ user }) {
             onClick={(e) => {
               // Call the next auth gmail login function
               e.preventDefault();
-              signIn("google", { callbackUrl: "http://localhost:3000/home/" });
-              router.push("/home/");
+              signIn("google", { callbackUrl: `${MAIN_URL}/home/` });
             }}
           >
             Log in Via Gmail

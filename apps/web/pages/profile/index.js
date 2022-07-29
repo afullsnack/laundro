@@ -16,6 +16,7 @@ import {
 } from "ui";
 import { useLogoutDrawer } from "ui/hooks";
 import { withUserLayout } from "../../components/Layout";
+import { MAIN_URL } from "../../lib/global";
 import styles from "../../styles/Home.module.css";
 
 export default withUserLayout(({ pageWidth }) => {
@@ -29,7 +30,7 @@ export default withUserLayout(({ pageWidth }) => {
     [
       () => {
         /*Logout function handle some cleanup*/
-        signOut({ callbackUrl: "http://localhost:3000/?login" }); //Take user back to the login page
+        signOut({ callbackUrl: `${MAIN_URL}/?login` }); //Take user back to the login page
       },
       () => logoutDrawer.close(),
     ],
