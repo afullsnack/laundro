@@ -30,7 +30,7 @@ export default withUserLayout(({ pageWidth }) => {
     [
       () => {
         /*Logout function handle some cleanup*/
-        signOut({ callbackUrl: `${MAIN_URL}/?login` }); //Take user back to the login page
+        signOut({ callbackUrl: `${MAIN_URL}/` }); //Take user back to the login page
       },
       () => logoutDrawer.close(),
     ],

@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -88,27 +89,28 @@ function Home() {
           </Col>
           <Col span={24}>
             <Card style={{ borderRadius: 5 }}>
-              {pickups?.data?.length <= 0 && (
-                <>
-                  <h3 style={{ margin: 0, fontWeight: "bold" }}>
-                    No Pickup Scheduled
-                  </h3>
-                  <br />
-                  <span>
-                    Looks like you don’t have a pick up scheduled. Schedule one
-                    now
-                  </span>
-                  <br />
-                  <br />
-                  <Button
-                    className={styles.normal_btn}
-                    size="large"
-                    onClick={() => router.push("/pickups/scheduler")}
-                  >
-                    Schedule Pick Up
-                  </Button>
-                </>
-              )}
+              {!pickups ||
+                (pickups?.data?.length <= 0 && (
+                  <>
+                    <h3 style={{ margin: 0, fontWeight: "bold" }}>
+                      No Pickup Scheduled
+                    </h3>
+                    <br />
+                    <span>
+                      Looks like you don’t have a pick up scheduled. Schedule
+                      one now
+                    </span>
+                    <br />
+                    <br />
+                    <Button
+                      className={styles.normal_btn}
+                      size="large"
+                      onClick={() => router.push("/pickups/scheduler")}
+                    >
+                      Schedule Pick Up
+                    </Button>
+                  </>
+                ))}
             </Card>
           </Col>
           <Col
@@ -124,27 +126,57 @@ function Home() {
             <span>Select your next pickup date</span>
           </Col>
           <Col span={8}>
-            <Card style={{ borderRadius: 5 }} hoverable>
-              <span>Oct</span>
+            <Card
+              style={{ borderRadius: 5 }}
+              hoverable
+              onClick={(e) =>
+                router.push(
+                  `/pickups/scheduler?date=${moment().add(1, "days")}`
+                )
+              }
+            >
+              <span>{moment(moment().add(1, "days"), "M").format("MMM")}</span>
               <br />
-              <h3 style={{ margin: 0, fontWeight: "bold" }}>28</h3>
-              <span>2021</span>
+              <h3 style={{ margin: 0, fontWeight: "bold" }}>
+                {moment(moment().day() + 1, "d").format("DD")}
+              </h3>
+              <span>{moment().year()}</span>
             </Card>
           </Col>
           <Col span={8}>
-            <Card style={{ borderRadius: 5 }} hoverable>
-              <span>Oct</span>
+            <Card
+              style={{ borderRadius: 5 }}
+              hoverable
+              onClick={(e) =>
+                router.push(
+                  `/pickups/scheduler?date=${moment().add(2, "days")}`
+                )
+              }
+            >
+              <span>{moment(moment().add(2, "days"), "M").format("MMM")}</span>
               <br />
-              <h3 style={{ margin: 0, fontWeight: "bold" }}>29</h3>
-              <span>2021</span>
+              <h3 style={{ margin: 0, fontWeight: "bold" }}>
+                {moment(moment().add(2, "days"), "d").format("DD")}
+              </h3>
+              <span>{moment().year()}</span>
             </Card>
           </Col>
           <Col span={8}>
-            <Card style={{ borderRadius: 5 }} hoverable>
-              <span>Oct</span>
+            <Card
+              style={{ borderRadius: 5 }}
+              hoverable
+              onClick={(e) =>
+                router.push(
+                  `/pickups/scheduler?date=${moment().add(3, "days")}`
+                )
+              }
+            >
+              <span>{moment(moment().add(3, "days"), "M").format("MMM")}</span>
               <br />
-              <h3 style={{ margin: 0, fontWeight: "bold" }}>30</h3>
-              <span>2021</span>
+              <h3 style={{ margin: 0, fontWeight: "bold" }}>
+                {moment(moment().add(3, "days"), "d").format("DD")}
+              </h3>
+              <span>{moment().year()}</span>
             </Card>
           </Col>
           <Col span={24}>

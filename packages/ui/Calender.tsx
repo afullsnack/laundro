@@ -2,7 +2,12 @@ import { Calendar, Card } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 
-export const ScheduleCalender = ({ onDatePicked, showHeader = false } : any) => {
+export const ScheduleCalender = ({
+  onDatePicked,
+  showHeader = true,
+  date = undefined,
+}: any) => {
+  console.log(date, "From comp");
   const onPanelChange = (value: any, mode: any) => {
     console.log(value, mode);
   };
@@ -16,14 +21,22 @@ export const ScheduleCalender = ({ onDatePicked, showHeader = false } : any) => 
     onDatePicked(date?._d);
   };
 
-  const [defaultDate, setDefaultDate] = useState<moment.Moment | any>();
+  const [defaultDate, setDefaultDate] = useState<moment.Moment | any>(
+    date ? moment.unix(date) : moment.now()
+  );
 
   useEffect(() => {
     // Effect to set default date on component render @Param: (moment object)
 
-    setDefaultDate(moment.now());
+    if (!date) {
+      console.log("Hit default");
+      setDefaultDate(moment.now());
+    } else {
+      console.log("Hit date");
+      setDefaultDate(moment.unix(date).millisecond());
+    }
     return () => {};
-  }, [moment]);
+  }, [moment, date]);
 
   return (
     <Card style={{ borderRadius: 30 }}>
@@ -33,7 +46,19 @@ export const ScheduleCalender = ({ onDatePicked, showHeader = false } : any) => 
         onPanelChange={onPanelChange}
         onSelect={onSelect}
         mode="month"
-        headerRender={({ value, type, onChange, onTypeChange }) => showHeader? <h3 style={{margin: 0, textAlign: "center", color: "rgba(9, 32, 88, 1)"}}>{moment.months()[value.month()]}</h3> : null}
+        headerRender={({ value, type, onChange, onTypeChange }) =>
+          showHeader ? (
+            <h3
+              style={{
+                margin: 0,
+                textAlign: "center",
+                color: "rgba(9, 32, 88, 1)",
+              }}
+            >
+              {moment.months()[value.month()]}
+            </h3>
+          ) : null
+        }
       />
     </Card>
   );

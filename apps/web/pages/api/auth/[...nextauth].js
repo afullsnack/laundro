@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 
 const options = {
@@ -7,6 +8,26 @@ const options = {
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    Credentials({
+      name: "sms-credentials",
+      credentials: {
+        phone: {
+          label: "Phone",
+          type: "text",
+          placeholder: "Enter phone number",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "Enter your password",
+        },
+      },
+      async authorize(credentials, req) {
+        //  Get user from db and return, also check if user was in record and populate new user field
+        console.log(credentials, req, "Credentials details");
+        return null;
+      },
     }),
   ],
   database: process.env.NEXT_PUBLIC_DATABASE_URL,
@@ -70,13 +91,13 @@ const options = {
       console.log(session, user, token, "Session data in [...nextauth.js]");
       return session;
     },
-    async redirect(url, _baseUrl) {
-      if (url == "/home") {
-        return Promise.resolve("/");
-      }
+    // async redirect(url, _baseUrl) {
+    //   if (url == "/home") {
+    //     return Promise.resolve("/");
+    //   }
 
-      return Promise.resolve("/");
-    },
+    //   return Promise.resolve("/");
+    // },
   },
 };
 
