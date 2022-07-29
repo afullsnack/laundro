@@ -20,7 +20,7 @@ export default withUserLayout(() => {
   const router = useRouter();
   const { date } = router.query;
   console.log(date, "Default date");
-  const [day, setDay] = useState(weekdays()[new Date().getDay()]);
+  const [day, setDay] = useState(weekdays()[new Date(date).getDay()]);
   const [recurringValue, setRecurringValue] = useState("weekly");
 
   const onRecurringChange = (e) => {

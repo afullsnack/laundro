@@ -68,7 +68,9 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <h2 style={{ margin: 0 }}>Hi {userData?.firstName || "Uba"}</h2>
+            <h2 style={{ margin: 0 }}>
+              Hi {userData?.firstName || userData?.fullName}
+            </h2>
             <span>Glad to have you back</span>
           </Col>
           <Col
@@ -82,14 +84,14 @@ function Home() {
             }}
           >
             <Avatar
-              src={userData?.image || "/icon-384x384.png"}
+              src={userData?.image || userData?.picture}
               shape="circle"
               size="100%"
             />
           </Col>
           <Col span={24}>
             <Card style={{ borderRadius: 5 }}>
-              {!pickups ||
+              {typeof pickups === null ||
                 (pickups?.data?.length <= 0 && (
                   <>
                     <h3 style={{ margin: 0, fontWeight: "bold" }}>
