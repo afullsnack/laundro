@@ -1,7 +1,7 @@
 // import "antd/dist/antd.min.css";
-// import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "../styles/globals.css";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {

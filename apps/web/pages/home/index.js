@@ -12,14 +12,15 @@ import styles from "../../styles/Home.module.css";
 function Home() {
   const router = useRouter();
   const [userData, setUserData] = useState();
-  const { data: session, status } = useSession();
+  const { data: { jwt, user } = {}, status } = useSession();
+  // const { jwt, user } = session || {};
 
   // Setup query to get pickups and schedules
   const queryClient = useQueryClient();
   const [{ isLoading, data: pickups }] = useQueries([
     {
-      queryKey: ["getPickups", session?.jwt],
-      queryFn: () => getPickups({ token: session?.jwt }),
+      queryKey: ["getPickups", jwt],
+      queryFn: () => getPickups({ token: jwt }),
       onSuccess(data) {
         console.log(data, "Data from fetching pickups");
       },
@@ -30,12 +31,8 @@ function Home() {
   ]);
 
   useEffect(() => {
-    console.log(session, session?.jwt, status);
-    if (status === "authenticated") {
-      const { user } = session;
-      if (typeof user !== "undefined") setUserData(user);
-      queryClient.invalidateQueries("getPickups");
-    }
+    console.log(jwt, status);
+    if (status === "authenticated") queryClient.invalidateQueries("getPickups");
   }, [status]);
 
   return (
@@ -69,7 +66,7 @@ function Home() {
             }}
           >
             <h2 style={{ margin: 0 }}>
-              Hi {userData?.firstName || userData?.fullName}
+              Hi {user?.firstName || user?.fullName}
             </h2>
             <span>Glad to have you back</span>
           </Col>
@@ -84,7 +81,7 @@ function Home() {
             }}
           >
             <Avatar
-              src={userData?.image || userData?.picture}
+              src={user?.image || user?.picture}
               shape="circle"
               size="100%"
             />
@@ -140,7 +137,7 @@ function Home() {
               <span>{moment(moment().add(1, "days"), "M").format("MMM")}</span>
               <br />
               <h3 style={{ margin: 0, fontWeight: "bold" }}>
-                {moment(moment().day() + 1, "d").format("DD")}
+                {moment(moment().add(1, "days"), "d").format("DD")}
               </h3>
               <span>{moment().year()}</span>
             </Card>
@@ -183,7 +180,7 @@ function Home() {
           </Col>
           <Col span={24}>
             <Card
-              title={<h4 style={{ margin: 0, textAlign: "left" }}>Wallet</h4>}
+              title={<h4 style={{ margin: 0, textAlign: "left" }}>Clothes</h4>}
               extra={
                 <div
                   style={{
@@ -193,9 +190,9 @@ function Home() {
                     justifyContent: "center",
                   }}
                 >
-                  <h3 style={{ margin: 0 }}>N0.00</h3>
+                  <h3 style={{ margin: 0 }}>50.00</h3>
                   <span style={{ fontSize: ".8rem", color: "rgba(0,0,0,.45)" }}>
-                    Credit Balance
+                    Token Balance
                   </span>
                 </div>
               }

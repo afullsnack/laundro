@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -30,4 +34,12 @@ a {
 
 .ant-list-item-meta-description {
   line-height: 1.1;
+}
+
+.ant-btn-lg {
+  @apply rounded-full
+}
+
+.ant-btn-primary {
+  @apply bg-primary border-primary
 }

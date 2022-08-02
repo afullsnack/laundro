@@ -45,8 +45,10 @@ function Index({ user }) {
             rel="Login image"
           />
           <br />
-          <h2>Schedule & Manage Pickups</h2>
-          <span>
+          <h2 className="text-2xl text-black font-bold">
+            Schedule & Manage Pickups
+          </h2>
+          <span className="text-md font-normal">
             Schedule one-time pickups or create a Recurring schedule. Add
             cleaning notes. Change Delivery locations and payment methods Or
             even reschedule with one tap
@@ -65,7 +67,7 @@ function Index({ user }) {
           <br />
           <Button
             // href="/api/auth/signin"
-            type="ghost"
+            type="primary"
             className={styles.normal_btn}
             size="large"
             block
